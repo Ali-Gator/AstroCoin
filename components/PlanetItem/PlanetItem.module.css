@@ -1,0 +1,19 @@
+.PlanetItem {
+  display: flex;
+  align-items: center;
+  flex-flow: row;
+  margin-left: auto;
+  gap: 6px;
+}
+
+.title {
+}
+
+.planet {
+  width: 20px;
+  height: 20px;
+}
+
+.rightArrow {
+  margin-left: 2px;
+}

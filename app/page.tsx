@@ -1,17 +1,18 @@
-'use client'
-import Image from "next/image";
-import styles from "./page.module.css";
-import { useState } from 'react';
+'use client';
+import styles from './page.module.css';
 import Loading from '@/app/loading';
+import { CommunityWidget } from '@/widgets/CommunityWidget';
+import alien from '../public/avatars/alien.png';
+import { useTelegram } from '@/helpers/TelegramContext/TelegramContext';
 
 export default function Home() {
-  const [isLoading, setLoading] = useState(true);
+  const { isLoading } = useTelegram();
 
-
-
-  return isLoading ? <Loading/> : (
+  return isLoading ? (
+    <Loading />
+  ) : (
     <main className={styles.main}>
-     <p>Main page</p>
+      <CommunityWidget imageSrc={alien} imageAlt="alien" />
     </main>
   );
 }
