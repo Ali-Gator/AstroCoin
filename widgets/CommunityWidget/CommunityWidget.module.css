@@ -11,6 +11,7 @@
 .infoWrapper {
   display: flex;
   flex-flow: column;
+  margin-right: auto;
 
   .title {
     font-size: 13px;
@@ -31,7 +32,7 @@
       line-height: 20px;
     }
 
-    .icon {
+    .coin {
       width: 20px;
       height: 20px;
     }

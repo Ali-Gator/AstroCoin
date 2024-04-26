@@ -2,11 +2,13 @@
   --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
   'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
   'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
-  --font-termina: 'Termina Test Regular', 'Arial';
+
+  --font-termina400: 'Termina Test Regular', 'Arial';
+  --font-termina700: 'Termina Test Bold', 'Arial';
+
   --background-color: #121316;
   --main-text-color: #fff;
 }
-
 
 * {
   box-sizing: border-box;

@@ -7,20 +7,20 @@ import token from '../../public/main-token.svg';
 
 
 export const CommunityWidget: FC<ICommunityWidget> = ({
-                                                          imageSrc,
-                                                          imageAlt,
+                                                        imageSrc,
+                                                        imageAlt,
                                                       }) => {
-    return (
-        <div className={styles.communityWidget}>
-            <Image src={imageSrc} alt={imageAlt ?? ''} />
-            <div className={styles.infoWrapper}>
-                <p className={styles.title}>XSYCOIN COMMUNITY</p>
-                <div className={styles.tokenWrapper}>
-                    <p className={styles.sum}>14,593,386</p>
-                    <Image className={styles.icon} src={token} alt={'main token'} />
-                </div>
-            </div>
-            <PlanetItem type={EPlanetType.Earth} />
+  return (
+    <div className={styles.communityWidget}>
+      <Image src={imageSrc} alt={imageAlt ?? ''} />
+      <div className={styles.infoWrapper}>
+        <p className={styles.title}>XSYCOIN COMMUNITY</p>
+        <div className={styles.tokenWrapper}>
+          <p className={styles.sum}>14,593,386</p>
+          <Image className={styles.coin} src={token} alt={'main token'} />
         </div>
-    );
+      </div>
+      <PlanetItem type={EPlanetType.Earth} />
+    </div>
+  );
 };
