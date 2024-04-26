@@ -1,0 +1,44 @@
+.communityWidget {
+  display: flex;
+  align-items: center;
+  flex-flow: row;
+  padding: 16px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.1);
+  gap: 16px;
+}
+
+.infoWrapper {
+  display: flex;
+  flex-flow: column;
+  margin-right: auto;
+
+  .title {
+    font-size: 13px;
+    font-weight: 900;
+    line-height: 20px;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .tokenWrapper {
+    display: flex;
+    align-items: center;
+    flex-flow: row;
+    gap: 4px;
+
+    .sum {
+      font-size: 16px;
+      font-weight: 800;
+      line-height: 20px;
+    }
+
+    .coin {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
+
+
+
+

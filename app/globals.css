@@ -1,23 +1,27 @@
 :root {
-  --font-mono: "Termina Test Regular", ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
-    "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
-    "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
+  --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
+  'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
+  'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
+
+  --font-termina400: 'Termina Test Regular', 'Arial';
+  --font-termina700: 'Termina Test Bold', 'Arial';
 
   --background-color: #121316;
   --main-text-color: #fff;
 }
 
-
 * {
   box-sizing: border-box;
-  padding: 0;
   margin: 0;
+  padding: 0;
 }
 
 html,
 body {
-  max-width: 100vw;
   overflow-x: hidden;
+  max-width: 500px;
+  height: var(--tg-viewport-stable-height, 100vh);
+  margin: 0 auto;
 }
 
 body {
@@ -26,8 +30,8 @@ body {
 }
 
 a {
-  color: inherit;
   text-decoration: none;
+  color: inherit;
 }
 
 @media (prefers-color-scheme: dark) {
