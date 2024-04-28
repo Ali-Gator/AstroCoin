@@ -10,6 +10,8 @@ export const Energy: FC<IEnergy> = ({ currentAmount }) => {
       <span className={styles.totalEnergy}>/ 1000</span>
       <span className={styles.currentEnergyText}>Energy</span>
     </div>
-    <div className={styles.energyScale} style={{ width: `${currentAmount / 10}%` }}></div>
+    <div className={styles.energyScaleWrapper}>
+      <div className={styles.energyScale} style={{ width: `${currentAmount / 10}%` }}></div>
+    </div>
   </div>;
 };

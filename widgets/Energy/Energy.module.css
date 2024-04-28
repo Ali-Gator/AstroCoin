@@ -1,5 +1,5 @@
 .energyWrapper {
-  margin-top: 32px;
+  margin-top: auto;
 }
 
 .currentEnergy {
@@ -26,9 +26,15 @@
   font-weight: 600;
 }
 
-.energyScale {
+.energyScaleWrapper {
   height: 8px;
   margin-top: 8px;
+  border-radius: 8px;
+  background: var(--background-transparent-color01);
+}
+
+.energyScale {
+  height: 100%;
   border-radius: 8px;
   background: linear-gradient(to right, var(--loading-gradient-start) 0%, var(--loading-gradient-end) 100%);
 }

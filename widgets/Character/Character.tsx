@@ -21,6 +21,6 @@ export const Character: FC = () => {
         </div>
         <PlanetItem type={EPlanetType.Earth} />
       </div>
-      <Image className={styles.mainAvatar} src={alienEgg} alt="New borm alien inside egg" /></div>
+      <Image className={styles.mainAvatar} src={alienEgg} alt="New borm alien inside egg" priority /></div>
   );
 };

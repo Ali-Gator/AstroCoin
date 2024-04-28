@@ -7,6 +7,8 @@
   --font-termina700: 'Termina Test Bold', 'Arial';
 
   --background-color: #121316;
+  --background-transparent-color01: rgba(255, 255, 255, 0.1);
+  --background-transparent-color02: rgba(255, 255, 255, 0.2);
   --main-text-color: #fff;
   --loading-gradient-start: #FE6A26;
   --loading-gradient-end: #FFFC00;
@@ -34,6 +36,17 @@ body {
 a {
   text-decoration: none;
   color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+}
+
+button:active {
+  transform: scale(0.9);
 }
 
 @media (prefers-color-scheme: dark) {
