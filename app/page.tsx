@@ -5,6 +5,8 @@ import { CommunityWidget } from '@/widgets/CommunityWidget';
 import alien from '../public/avatars/alien.png';
 import { useTelegram } from '@/helpers/TelegramContext/TelegramContext';
 import { Character } from '@/widgets/Character';
+import { Energy } from '@/widgets/Energy';
+import { Menu } from '@/widgets/Menu';
 
 export default function Home() {
   const { isLoading } = useTelegram();
@@ -15,6 +17,8 @@ export default function Home() {
     <main className={styles.main}>
       <CommunityWidget imageSrc={alien} imageAlt="alien" />
       <Character />
+      <Energy currentAmount={564} />
+      <Menu />
     </main>
   );
 }

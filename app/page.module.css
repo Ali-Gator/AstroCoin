@@ -24,7 +24,7 @@
   animation: gradient 2s infinite;
   animation-timing-function: linear;
   border-radius: 48px;
-  background: repeating-linear-gradient(to right, #FE6A26 0%, #FFFC00 50%, #FE6A26 100%);
+  background: repeating-linear-gradient(to right, var(--loading-gradient-start) 0%, var(--loading-gradient-end) 50%, var(--loading-gradient-start) 100%);
   background-position: 0 100%;
   background-size: 200% auto;
   animation-fill-mode: forwards;

@@ -1,0 +1,23 @@
+.menuItem {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  flex-flow: column;
+  gap: 4px;
+
+  &:not(&:last-child) {
+    border-right: 1px solid var(--background-transparent-color02);
+  }
+}
+
+.icon {
+  width: 32px;
+  height: 32px;
+}
+
+.title {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
