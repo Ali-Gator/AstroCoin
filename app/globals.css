@@ -8,6 +8,8 @@
 
   --background-color: #121316;
   --main-text-color: #fff;
+  --loading-gradient-start: #FE6A26;
+  --loading-gradient-end: #FFFC00;
 }
 
 * {
