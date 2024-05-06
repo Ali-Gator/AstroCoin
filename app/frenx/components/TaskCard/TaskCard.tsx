@@ -8,10 +8,16 @@ import token from '@/public/main-token.svg';
 import arrow from '@/public/icons/arrow-right.svg';
 import Link from 'next/link';
 
-
-export const TaskCard: FC<ITaskCard> = ({ additionalClass, title, description }) => {
+export const TaskCard: FC<ITaskCard> = ({
+  additionalClass,
+  title,
+  description,
+}) => {
   return (
-    <Link className={classNames(additionalClass, styles.taskCardWrapper)} href="/">
+    <Link
+      className={classNames(additionalClass, styles.taskCardWrapper)}
+      href="/"
+    >
       <div className={styles.imageWrapper}>
         <Image className={styles.image} src={taskIcon} alt="task icon" />
       </div>

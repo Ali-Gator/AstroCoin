@@ -15,9 +15,7 @@ const taskCardData2: ITaskCard = {
   description: '+100,000',
 };
 
-
 export default function Page() {
-
   return (
     <main className={styles.frenxWrapper}>
       <Image className={styles.tokenImage} src={token} alt="token" />
@@ -29,7 +27,9 @@ export default function Page() {
         <div className={styles.advertisement}>
           <p className={styles.subHeading}>Learn about TON blockchain</p>
           <p className={styles.heading}>Exclusive Skin and 200K XSY</p>
-          <Link className={styles.link} href="/">Learn about TON</Link>
+          <Link className={styles.link} href="/">
+            Learn about TON
+          </Link>
         </div>
         <TaskCard additionalClass={styles.taskCard} {...taskCardData2} />
       </section>
