@@ -1,55 +1,19 @@
-import { FC, useMemo } from 'react';
+import { FC } from 'react';
 import Image from 'next/image';
-import { EPlanetType, IPlanetItem } from '@/components/PlanetItem/types';
-import earth from '../../public/planets/earth.png';
-import mars from '../../public/planets/mars.png';
-import saturn from '../../public/planets/saturn.png';
+import { IPlanetItem } from '@/components/PlanetItem/types';
 import styles from './PlanetItem.module.css';
 import arrow from '../../public/icons/arrow-right.svg';
+import Link from 'next/link';
+import { usePlanetData } from '@/helpers/usePlanetData';
 
 export const PlanetItem: FC<IPlanetItem> = ({ type }) => {
-  const { imageSrc, imageAlt, planetName } = useMemo(() => {
-    let imageSrc;
-    let imageAlt;
-    let planetName;
-
-    switch (type) {
-      case EPlanetType.Earth: {
-        imageSrc = earth;
-        imageAlt = EPlanetType.Earth;
-        planetName = EPlanetType.Earth;
-        break;
-      }
-
-      case EPlanetType.Mars: {
-        imageSrc = mars;
-        imageAlt = EPlanetType.Mars;
-        planetName = EPlanetType.Mars;
-
-        break;
-      }
-
-      case EPlanetType.Saturn: {
-        imageSrc = saturn;
-        imageAlt = EPlanetType.Saturn;
-        planetName = EPlanetType.Saturn;
-        break;
-      }
-
-      default:
-        imageSrc = earth;
-        imageAlt = EPlanetType.Earth;
-        planetName = EPlanetType.Earth;
-    }
-
-    return { imageSrc, imageAlt, planetName };
-  }, [type]);
+  const { imageSrc, imageAlt, planetName } = usePlanetData(type);
 
   return (
-    <div className={styles.PlanetItem}>
+    <Link className={styles.PlanetItem} href="/planets">
       <Image className={styles.planet} src={imageSrc} alt={imageAlt} />
       <p className={styles.title}>{planetName}</p>
       <Image className={styles.rightArrow} src={arrow} alt={''} />
-    </div>
+    </Link>
   );
 };

@@ -7,7 +7,6 @@ import { EPlanetType, PlanetItem } from '@/components/PlanetItem';
 import alienEgg from '../../public/avatars/new-born-egg.png';
 
 export const Character: FC = () => {
-
   return (
     <div className={styles.character}>
       <div className={styles.sumWrapper}>
@@ -16,11 +15,21 @@ export const Character: FC = () => {
       </div>
       <div className={styles.subtitle}>
         <div className={styles.placeWrapper}>
-          <Image className={styles.placeIcon} src={firstPlace} alt="First place" />
+          <Image
+            className={styles.placeIcon}
+            src={firstPlace}
+            alt="First place"
+          />
           <p className={styles.placeCount}>203,596</p>
         </div>
         <PlanetItem type={EPlanetType.Earth} />
       </div>
-      <Image className={styles.mainAvatar} src={alienEgg} alt="New borm alien inside egg" priority /></div>
+      <Image
+        className={styles.mainAvatar}
+        src={alienEgg}
+        alt="New borm alien inside egg"
+        priority
+      />
+    </div>
   );
 };
