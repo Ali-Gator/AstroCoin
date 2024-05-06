@@ -9,7 +9,6 @@ export default function Loading() {
         alt="XSYCOIN Logo"
         width={260}
         height={12}
-        priority
       />
       <div className={styles.animatedGradient} />
     </div>
