@@ -4,6 +4,7 @@ export interface IPlanetItem {
 
 export enum EPlanetType {
   Earth = 'Earth',
+  Moon = 'Moon',
   Mars = 'Mars',
   Saturn = 'Saturn',
   Kempel241 = 'Kempel 241',

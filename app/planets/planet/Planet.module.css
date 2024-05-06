@@ -1,0 +1,24 @@
+.planetWrapper {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  border-radius: 24px;
+  background-color: var(--background-transparent-color02);
+  gap: 8px;
+
+}
+
+.active {
+  border: 2px solid var(--main-text-color);
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+}
+
+.name {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+}

@@ -1,6 +1,6 @@
 .frenxWrapper {
   padding: 16px;
-  background-color: rgba(18, 19, 22, 1);
+  background-color: var(--background-color);
 }
 
 .tokenImage {
