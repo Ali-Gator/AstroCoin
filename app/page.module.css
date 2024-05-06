@@ -3,7 +3,6 @@
   align-items: stretch;
   flex-flow: column;
   width: 100%;
-  min-height: var(--tg-viewport-stable-height, 100vh);
   padding: 16px;
   background: linear-gradient(to bottom, var(--background-color) 35%, #67614e);
 }
