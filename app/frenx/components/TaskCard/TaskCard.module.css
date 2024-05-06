@@ -1,0 +1,47 @@
+.taskCardWrapper {
+  display: flex;
+  align-items: center;
+  flex-flow: row;
+  padding: 16px;
+  border-radius: 16px;
+  background: var(--background-transparent-color02);
+  gap: 8px;
+}
+
+.imageWrapper {
+  padding: 12px;
+  border-radius: 12px;
+  background: var(--background-transparent-color01);
+}
+
+.image {
+  width: 40px;
+  height: 40px;
+}
+
+.title {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+.descriptionWrapper {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.description {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+}
+
+.token {
+  width: 20px;
+  height: 20px;
+}
+
+.rightArrow {
+  margin-left: auto;
+}
