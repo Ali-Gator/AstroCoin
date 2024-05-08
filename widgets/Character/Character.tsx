@@ -2,9 +2,9 @@ import { FC } from 'react';
 import styles from './Character.module.css';
 import Image from 'next/image';
 import token from '@/public/main-token.svg';
-import firstPlace from '../../public/icons/first-place.svg';
+import firstPlace from '@/public/icons/first-place.svg';
 import { EPlanetType, PlanetItem } from '@/components/PlanetItem';
-import alienEgg from '../../public/avatars/new-born-egg.png';
+import alienEgg from '@/public/avatars/new-born-egg.png';
 
 export const Character: FC = () => {
   return (

@@ -2,7 +2,7 @@ import { FC } from 'react';
 import Image from 'next/image';
 import { IPlanetItem } from '@/components/PlanetItem/types';
 import styles from './PlanetItem.module.css';
-import arrow from '../../public/icons/arrow-right.svg';
+import arrow from '@/public/icons/arrow-right.svg';
 import Link from 'next/link';
 import { usePlanetData } from '@/helpers/usePlanetData';
 

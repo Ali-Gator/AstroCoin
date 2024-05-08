@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import styles from './Menu.module.css';
 import { MenuItem } from '@/components/MenuItem';
-import potato from '../../public/icons/potato.png';
-import token from '../../public/main-token.svg';
-import burger from '../../public/icons/burger.png';
+import potato from '@/public/icons/potato.png';
+import token from '@/public/main-token.svg';
+import burger from '@/public/icons/burger.png';
 
 export const Menu: FC = () => {
   return (
