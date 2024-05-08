@@ -3,13 +3,13 @@ import { FC } from 'react';
 import { ICommunityWidget } from '@/widgets/CommunityWidget/types';
 import { EPlanetType, PlanetItem } from '@/components/PlanetItem';
 import styles from './CommunityWidget.module.css';
-import token from '../../public/main-token.svg';
+import token from '@/public/main-token.svg';
 
 
 export const CommunityWidget: FC<ICommunityWidget> = ({
-                                                        imageSrc,
-                                                        imageAlt,
-                                                      }) => {
+  imageSrc,
+  imageAlt,
+}) => {
   return (
     <div className={styles.communityWidget}>
       <Image src={imageSrc} alt={imageAlt ?? ''} />

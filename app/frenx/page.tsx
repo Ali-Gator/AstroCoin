@@ -1,8 +1,8 @@
 import styles from './page.module.css';
 import Image from 'next/image';
-import token from '../../public/main-token.svg';
-import { TaskCard } from '@/app/frenx/components/TaskCard';
-import { ITaskCard } from '@/app/frenx/components/TaskCard/types';
+import token from '@/public/main-token.svg';
+import { TaskCard } from './components/TaskCard';
+import { ITaskCard } from './components/TaskCard/types';
 import Link from 'next/link';
 
 const taskCardData1: ITaskCard = {
