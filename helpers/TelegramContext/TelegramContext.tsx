@@ -2,36 +2,40 @@
 import Script from 'next/script';
 import { createContext, useContext, useEffect, useState } from 'react';
 
-export const TelegramContext = createContext<{ telegramApp?: Telegram, isLoading: boolean }>({isLoading: true});
+export const TelegramContext = createContext<{
+  telegramApp?: Telegram;
+  isLoading: boolean;
+}>({ isLoading: true });
 
 export const TelegramProvider = ({
-    children,
+  children,
 }: {
-    children: React.ReactNode;
+  children: React.ReactNode;
 }) => {
-    const [webApp, setWebApp] = useState<Telegram | undefined>(undefined);
-    const [isLoading, setLoading] = useState(true);
+  const [webApp, setWebApp] = useState<Telegram | undefined>(undefined);
+  const [isLoading, setLoading] = useState(true);
 
-    useEffect(() => {
-        const app = window.Telegram;
+  useEffect(() => {
+    const app = window.Telegram;
 
-        if (app) {
-            app.WebApp.ready();
-            app.WebApp.expand();
-            setWebApp(app);
-            setLoading(false)
-        }
-    }, []);
+    if (app) {
+      app.WebApp.ready();
+      app.WebApp.expand();
+      app.WebApp.isClosingConfirmationEnabled = false;
+      setWebApp(app);
+      setLoading(false);
+    }
+  }, []);
 
-    return (
-        <TelegramContext.Provider value={{ telegramApp: webApp, isLoading }}>
-            <Script
-                src="https://telegram.org/js/telegram-web-app.js"
-                strategy="beforeInteractive"
-            />
-            {children}
-        </TelegramContext.Provider>
-    );
+  return (
+    <TelegramContext.Provider value={{ telegramApp: webApp, isLoading }}>
+      <Script
+        src="https://telegram.org/js/telegram-web-app.js"
+        strategy="beforeInteractive"
+      />
+      {children}
+    </TelegramContext.Provider>
+  );
 };
 
 export const useTelegram = () => useContext(TelegramContext);
