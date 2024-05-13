@@ -1,6 +1,6 @@
 'use client';
 import Loading from '@/app/loading';
-import { useTelegram } from '@/helpers/TelegramContext/TelegramContext';
+import { useTelegram } from '@/helpers/providers/TelegramContext/TelegramContext';
 import { Character } from '@/widgets/Character';
 import { CommunityWidget } from '@/widgets/CommunityWidget';
 import { Energy } from '@/widgets/Energy';

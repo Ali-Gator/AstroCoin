@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import './font.css';
-import { TelegramProvider } from '@/helpers/TelegramContext/TelegramContext';
+import { ProvidersWrapper } from '@/helpers/providers';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <TelegramProvider>{children}</TelegramProvider>
+        <ProvidersWrapper>{children}</ProvidersWrapper>
       </body>
     </html>
   );
