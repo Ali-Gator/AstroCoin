@@ -5,13 +5,16 @@ import token from '@/public/main-token.svg';
 import firstPlace from '@/public/icons/first-place.svg';
 import { EPlanetType, PlanetItem } from '@/components/PlanetItem';
 import alienEgg from '@/public/avatars/new-born-egg.png';
+import { useBoundStore } from '@/store';
 
 export const Character: FC = () => {
+  const { balance } = useBoundStore((state) => state);
+
   return (
     <div className={styles.character}>
       <div className={styles.sumWrapper}>
         <Image className={styles.coin} src={token} alt={'main token'} />
-        <p className={styles.sum}>2,474</p>
+        <p className={styles.sum}>{balance.toFixed(2)}</p>
       </div>
       <div className={styles.subtitle}>
         <div className={styles.placeWrapper}>
