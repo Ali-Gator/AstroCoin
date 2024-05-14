@@ -7,6 +7,7 @@ import taskIcon from '@/public/icons/potato.png';
 import token from '@/public/main-token.svg';
 import arrow from '@/public/icons/arrow-right.svg';
 import Link from 'next/link';
+import { AppRoutes } from '@/config/routes';
 
 export const TaskCard: FC<ITaskCard> = ({
   additionalClass,
@@ -16,7 +17,7 @@ export const TaskCard: FC<ITaskCard> = ({
   return (
     <Link
       className={classNames(additionalClass, styles.taskCardWrapper)}
-      href="/"
+      href={AppRoutes.Home}
     >
       <div className={styles.imageWrapper}>
         <Image className={styles.image} src={taskIcon} alt="task icon" />
