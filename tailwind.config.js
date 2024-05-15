@@ -23,11 +23,18 @@ module.exports = {
           'Courier New',
           'monospace',
         ],
-        termina: {
-          400: ['Termina Test Regular', 'Arial'],
-          600: ['Termina Test Demi', 'Arial'],
-          700: ['Termina Test Bold', 'Arial'],
-        },
+        termina: ['Termina Test', 'monospace'],
+      },
+      letterSpacing: {
+        title: '0.03em',
+        'tight-title': '0.02em',
+      },
+      fontSize: {
+        md: '1rem',
+      },
+      backgroundColor: {
+        secondary: '#4B4F58',
+        'secondary-btn': '#000',
       },
       colors: {
         background: {
@@ -38,6 +45,7 @@ module.exports = {
         },
         text: {
           DEFAULT: '#fff',
+          'secondary-btn': '#fff',
         },
         gradient: {
           start: '#FE6A26',
