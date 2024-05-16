@@ -21,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={classNames(inter.className, 'min-h-screen p-4')}>
+      <body className={classNames(inter.className, 'min-h-screen')}>
         <TelegramProvider>{children}</TelegramProvider>
       </body>
     </html>
