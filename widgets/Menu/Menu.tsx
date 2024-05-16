@@ -11,7 +11,7 @@ export const Menu: FC = () => {
     <div className={styles.menuWrapper}>
       <MenuItem imageSrc={potato} title="frenx" linkPath={AppRoutes.Frenx} />
       <MenuItem imageSrc={token} title="earn" linkPath={AppRoutes.Earn} />
-      <MenuItem imageSrc={burger} title="foost" linkPath={AppRoutes.Foost} />
+      <MenuItem imageSrc={burger} title="foost" linkPath={AppRoutes.Store} />
     </div>
   );
 };
