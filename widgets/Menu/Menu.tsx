@@ -10,7 +10,7 @@ export const Menu: FC = () => {
     <div className={styles.menuWrapper}>
       <MenuItem imageSrc={potato} title="frenx" />
       <MenuItem imageSrc={token} title="earn" />
-      <MenuItem imageSrc={burger} title="foost" />
+      <MenuItem imageSrc={burger} title="foost" linkPath="store" />
     </div>
   );
 };
