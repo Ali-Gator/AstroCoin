@@ -1,4 +1,4 @@
-import { TaskItem } from './TaskItem';
+import { TaskItem } from '../TaskItem/TaskItem';
 import { tasks } from './data';
 
 export const TasksList = () => {

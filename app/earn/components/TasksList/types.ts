@@ -4,6 +4,6 @@ export interface Task {
   title: string;
   date: string;
   reward: number;
-  image: StaticImageData | string;
+  image: StaticImageData;
   isCompleted: boolean;
 }

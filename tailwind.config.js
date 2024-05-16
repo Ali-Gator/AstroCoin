@@ -23,7 +23,11 @@ module.exports = {
           'Courier New',
           'monospace',
         ],
-        termina: ['Termina Test', 'monospace'],
+        termina: {
+          400: ['Termina Test Regular', 'Arial'],
+          600: ['Termina Test Demi', 'Arial'],
+          700: ['Termina Test Bold', 'Arial'],
+        },
       },
       letterSpacing: {
         title: '0.03em',

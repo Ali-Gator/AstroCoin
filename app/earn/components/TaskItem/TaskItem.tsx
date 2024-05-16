@@ -1,4 +1,4 @@
-import { Task } from './types';
+import { Task } from '../TasksList/types';
 import Image from 'next/image';
 import xsycoin from '@/public/icons/xsycoin.svg';
 
