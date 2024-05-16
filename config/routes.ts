@@ -1,7 +1,7 @@
 export enum AppRoutes {
   Home = '/',
   Earn = '/earn',
-  Foost = '/foost',
+  Store = '/store',
   Frenx = '/frenx',
   Planets = '/planets',
 }

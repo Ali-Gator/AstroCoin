@@ -8,7 +8,7 @@ export function TopHeader() {
         <Image src={moon} alt="moon" objectFit="cover" width={72} height={72} />
         <span className="text-7xl">🧠</span>
       </div>
-      <span className="text-[32px] font-termina text-center tracking-tight-title font-bold leading-8">
+      <span className="text-[32px] font-termina700 text-center tracking-tight-title font-bold leading-8">
         Complete the
         <br /> tasks to earn
       </span>
