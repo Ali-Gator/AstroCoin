@@ -23,18 +23,18 @@ module.exports = {
           'Courier New',
           'monospace',
         ],
-        termina: {
-          400: ['Termina Test Regular', 'Arial'],
-          600: ['Termina Test Demi', 'Arial'],
-          700: ['Termina Test Bold', 'Arial'],
-        },
+        termina400: ['Termina Test Regular', 'Arial'],
+        termina600: ['Termina Test Demi', 'Arial'],
+        termina700: ['Termina Test Bold', 'Arial'],
       },
       colors: {
         background: {
-          DEFAULT: '#121316',
+          DEFAULT: 'rgba(18, 19, 22, 1)',
           transparent01: 'rgba(255, 255, 255, 0.1)',
           transparent02: 'rgba(255, 255, 255, 0.2)',
           transparent05: 'rgba(255, 255, 255, 0.5)',
+          transparent09: 'rgba(255, 255, 255, 0.9)',
+          cards: 'rgba(75, 79, 88, 1)',
         },
         text: {
           DEFAULT: '#fff',

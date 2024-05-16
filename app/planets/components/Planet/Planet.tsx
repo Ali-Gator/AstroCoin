@@ -1,7 +1,7 @@
 'use client';
 
 import { FC } from 'react';
-import { IPlanet } from '@/app/planets/planet/types';
+import { IPlanet } from '@/app/planets/components/Planet/types';
 import styles from './Planet.module.css';
 import { usePlanetData } from '@/helpers/usePlanetData';
 import Image from 'next/image';

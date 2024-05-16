@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import './font.css';
 import { TelegramProvider } from '@/helpers/TelegramContext/TelegramContext';
+import classNames from 'classnames';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -20,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={classNames(inter.className, 'px-4')}>
         <TelegramProvider>{children}</TelegramProvider>
       </body>
     </html>
