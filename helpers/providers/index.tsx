@@ -1,4 +1,4 @@
-import { TelegramProvider } from './TelegramContext/TelegramContext';
+import { TelegramProvider } from './TelegramContext';
 import { TonConnectProvider } from './TonConnectProvider';
 
 export const ProvidersWrapper = ({
