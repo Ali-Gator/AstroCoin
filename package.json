@@ -9,6 +9,7 @@
     "lint": "next lint --fix"
   },
   "dependencies": {
+    "@tonconnect/ui-react": "^2.0.2",
     "@types/telegram-web-app": "^7.2.1",
     "classnames": "^2.5.1",
     "next": "14.2.2",
