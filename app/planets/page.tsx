@@ -1,6 +1,6 @@
 import { InnerPage } from '@/widgets/InnerPage';
 import styles from './page.module.css';
-import { IPlanet, Planet } from '@/app/planets/planet';
+import { IPlanet, Planet } from './components/Planet';
 import { EPlanetType } from '@/components/PlanetItem';
 
 const planetsData: IPlanet[] = [

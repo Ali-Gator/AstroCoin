@@ -1,3 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
 :root {
   --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
   'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
@@ -16,6 +21,8 @@
   --loading-gradient-end: #FFFC00;
   --btn-background: rgba(46, 74, 197, 1);
 
+  /* added bg to see the edges of the screen */
+  background-color: rgb(111, 23, 23);
 }
 
 * {
@@ -32,8 +39,8 @@ body {
 }
 
 body {
-  color: rgb(var(--main-text-color));
-  background: rgb(var(--background-color));
+  color: var(--main-text-color);
+  background: var(--background-color);
 }
 
 main {

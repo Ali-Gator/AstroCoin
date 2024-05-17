@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 export const MenuItem: FC<IMenuItem> = ({ imageSrc, title, linkPath }) => {
   return (
-    <Link className={styles.menuItem} href={`/${linkPath ?? title}`}>
+    <Link className={styles.menuItem} href={linkPath}>
       <Image className={styles.icon} src={imageSrc} alt={title} />
       <p className={styles.title}>{title}</p>
     </Link>
