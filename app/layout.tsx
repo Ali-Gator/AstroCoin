@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import './font.css';
-import { TelegramProvider } from '@/helpers/TelegramContext/TelegramContext';
+import { ProvidersWrapper } from '@/helpers/providers';
 import classNames from 'classnames';
 
 const inter = Inter({
@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={classNames(inter.className, 'min-h-screen')}>
-        <TelegramProvider>{children}</TelegramProvider>
+        <ProvidersWrapper>{children}</ProvidersWrapper>
       </body>
     </html>
   );
