@@ -4,6 +4,7 @@ import token from '@/public/main-token.svg';
 import { TaskCard } from './components/TaskCard';
 import { ITaskCard } from './components/TaskCard/types';
 import Link from 'next/link';
+import { AppRoutes } from '@/config/routes';
 
 const taskCardData1: ITaskCard = {
   title: 'Invite bonus',
@@ -27,7 +28,7 @@ export default function Page() {
         <div className={styles.advertisement}>
           <p className={styles.subHeading}>Learn about TON blockchain</p>
           <p className={styles.heading}>Exclusive Skin and 200K XSY</p>
-          <Link className={styles.link} href="/">
+          <Link className={styles.link} href={AppRoutes.Home}>
             Learn about TON
           </Link>
         </div>

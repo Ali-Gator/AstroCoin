@@ -6,7 +6,7 @@ import { HorizontalCard } from '@/app/store/components/HorizontalCard';
 
 export default function Page() {
   return (
-    <>
+    <div className="p-4">
       <h1 className="font-termina600 text-2xl">Foost</h1>
       <ul
         className="grid grid-cols-[48px_minmax(min-content,_1fr)_112px] gap-x-2 gap-y-7 items-center
@@ -27,6 +27,6 @@ export default function Page() {
           <HorizontalCard key={data.title} {...data} />
         ))}
       </ul>
-    </>
+    </div>
   );
 }

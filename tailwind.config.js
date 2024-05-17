@@ -27,6 +27,17 @@ module.exports = {
         termina600: ['Termina Test Demi', 'Arial'],
         termina700: ['Termina Test Bold', 'Arial'],
       },
+      letterSpacing: {
+        title: '0.03em',
+        'tight-title': '0.02em',
+      },
+      fontSize: {
+        md: '1rem',
+      },
+      backgroundColor: {
+        secondary: '#4B4F58',
+        'secondary-btn': '#000',
+      },
       colors: {
         background: {
           DEFAULT: 'rgba(18, 19, 22, 1)',
@@ -38,6 +49,7 @@ module.exports = {
         },
         text: {
           DEFAULT: '#fff',
+          'secondary-btn': '#fff',
         },
         gradient: {
           start: '#FE6A26',
