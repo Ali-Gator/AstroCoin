@@ -21,6 +21,7 @@ export const TelegramProvider = ({
     if (app) {
       app.WebApp.ready();
       app.WebApp.expand();
+      app.WebApp.enableClosingConfirmation();
       setWebApp(app);
       setLoading(false);
     }
