@@ -49,6 +49,12 @@ module.exports = {
         secondary: '#4B4F58',
         'secondary-btn': '#000',
       },
+      height: {
+        'tg-viewport-stable-height': 'var(--tg-viewport-stable-height)',
+      },
+      minHeight: {
+        'tg-viewport-stable-height': 'var(--tg-viewport-stable-height)',
+      },
       colors: {
         background: {
           DEFAULT: 'rgba(18, 19, 22, 1)',
