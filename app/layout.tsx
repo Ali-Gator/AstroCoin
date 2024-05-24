@@ -21,7 +21,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={classNames(inter.className, 'min-h-screen')}>
+      <body
+        className={classNames(
+          inter.className,
+          'min-h-tg-viewport-stable-height',
+        )}
+      >
         <ProvidersWrapper>{children}</ProvidersWrapper>
       </body>
     </html>
