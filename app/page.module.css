@@ -4,7 +4,6 @@
   flex-flow: column;
   width: 100%;
   padding: 16px;
-  background: linear-gradient(to bottom, var(--background-color) 35%, #67614e);
 }
 
 .loading {

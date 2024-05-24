@@ -4,6 +4,7 @@ import { useBoundStore } from '@/store';
 
 export const Energy: FC = () => {
   const { foodStorage, foodStorageCapacity } = useBoundStore((state) => state);
+
   return (
     <div className={styles.energyWrapper}>
       <p className={styles.currentEnergy}>{foodStorage.toFixed(2)}</p>
