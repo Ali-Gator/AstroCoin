@@ -18,11 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={classNames(
-          sfPro.variable,
-          inter.className,
-          'min-h-tg-viewport-stable-height',
-        )}
+        className={classNames(sfPro.variable, inter.className, 'min-h-screen')}
       >
         <ProvidersWrapper>{children}</ProvidersWrapper>
       </body>
