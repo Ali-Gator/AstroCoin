@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import './font.css';
@@ -14,6 +14,10 @@ export const metadata: Metadata = {
   description: 'Site about XSYCOIN',
 };
 
+export const viewport: Viewport = {
+  userScalable: false,
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -21,7 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={classNames(inter.className, 'min-h-screen')}>
+      <body className={classNames(inter.className, 'min-h-screen select-none')}>
         <ProvidersWrapper>{children}</ProvidersWrapper>
       </body>
     </html>
