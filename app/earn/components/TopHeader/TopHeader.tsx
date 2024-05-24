@@ -13,7 +13,7 @@ export function TopHeader() {
           Complete the
           <br /> tasks to earn
         </span>
-        <span className="opacity-80 font-inter font-semibold text-md">
+        <span className="opacity-80 font-inter font-medium text-md">
           How to get started?
         </span>
       </div>

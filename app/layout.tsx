@@ -1,14 +1,9 @@
-import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-import './globals.css';
-import './font.css';
 import { ProvidersWrapper } from '@/helpers/providers';
 import classNames from 'classnames';
-
-const inter = Inter({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700', '800', '900'],
-});
+import type { Metadata } from 'next';
+import './font.css';
+import { inter, sfPro } from './fonts';
+import './globals.css';
 
 export const metadata: Metadata = {
   title: 'XSYCOIN TON',
@@ -22,7 +17,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={classNames(inter.className, 'min-h-screen')}>
+      <body
+        className={classNames(sfPro.variable, inter.className, 'min-h-screen')}
+      >
         <ProvidersWrapper>{children}</ProvidersWrapper>
       </body>
     </html>
