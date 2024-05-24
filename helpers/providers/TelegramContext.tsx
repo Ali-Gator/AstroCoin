@@ -24,6 +24,8 @@ export const TelegramProvider = ({
       app.WebApp.enableClosingConfirmation();
       setWebApp(app);
       setLoading(false);
+      app.WebApp.setHeaderColor('#000');
+      app.WebApp.setBackgroundColor('#000');
     }
   }, []);
 
