@@ -17,11 +17,10 @@ export const TelegramProvider = ({
   const [isLoading, setLoading] = useState(true);
   const router = useRouter();
 
-  const goBack = () => {
-    router.back();
-  };
-
   useEffect(() => {
+    const goBack = () => {
+      router.back();
+    };
     const app = window.Telegram;
 
     if (app) {
