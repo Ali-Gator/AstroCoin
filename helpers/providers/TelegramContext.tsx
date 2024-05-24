@@ -1,6 +1,7 @@
 'use client';
 import Script from 'next/script';
 import { createContext, useContext, useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 export const TelegramContext = createContext<{
   telegramApp?: Telegram;
@@ -14,14 +15,20 @@ export const TelegramProvider = ({
 }) => {
   const [webApp, setWebApp] = useState<Telegram | undefined>(undefined);
   const [isLoading, setLoading] = useState(true);
+  const router = useRouter();
 
   useEffect(() => {
+    const goBack = () => {
+      router.back();
+    };
     const app = window.Telegram;
 
     if (app) {
       app.WebApp.ready();
       app.WebApp.expand();
       app.WebApp.enableClosingConfirmation();
+      app.WebApp.BackButton.onClick(goBack);
+      app.WebApp.BackButton.show();
       setWebApp(app);
       setLoading(false);
       app.WebApp.setHeaderColor('#000');
