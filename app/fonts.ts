@@ -9,12 +9,12 @@ export const inter = Inter({
 export const sfPro = localFont({
   src: [
     {
-      path: '/font/SF-Pro-Display-Medium.otf',
+      path: '../public/font/SF-Pro-Display-Medium.otf',
       weight: '500',
       style: 'normal',
     },
     {
-      path: '/font/SF-Pro-Display-Regular.otf',
+      path: '../public/font/SF-Pro-Display-Regular.otf',
       weight: '400',
       style: 'normal',
     },
