@@ -8,11 +8,15 @@ export function TopHeader() {
         <Image src={moon} alt="moon" objectFit="cover" width={72} height={72} />
         <span className="text-7xl">🧠</span>
       </div>
-      <span className="text-[32px] font-termina700 text-center tracking-tight-title font-bold leading-8">
-        Complete the
-        <br /> tasks to earn
-      </span>
-      <span className="opacity-80 text-md">How to get started?</span>
+      <div className="flex flex-col gap-2 items-center">
+        <span className="text-[32px] font-termina700 text-center tracking-tight-title leading-8">
+          Complete the
+          <br /> tasks to earn
+        </span>
+        <span className="opacity-80 font-inter font-medium text-md">
+          How to get started?
+        </span>
+      </div>
     </div>
   );
 }
