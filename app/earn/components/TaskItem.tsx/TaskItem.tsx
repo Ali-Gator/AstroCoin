@@ -1,9 +1,17 @@
 import { Task } from '../TasksList/types';
 import Image from 'next/image';
 import xsycoin from '@/public/icons/xsycoin.svg';
+import { useBoundStore } from '@/store';
 
 export const TaskItem = ({ task }: { task: Task }) => {
+  const { addToBalance } = useBoundStore((state) => state);
   const { title, date, image, reward, isCompleted } = task;
+
+  const handleBalanceUpdate = () => {
+    if (!isCompleted) {
+      addToBalance(reward);
+    }
+  };
 
   return (
     <div className="flex flex-col items-stretch gap-3 w-full py-3 px-4 rounded-3xl font-inter bg-secondary font-bold">
@@ -29,7 +37,10 @@ export const TaskItem = ({ task }: { task: Task }) => {
           </span>
         </div>
       </div>
-      <button className="bg-secondary-btn text-text-secondary-btn font-inter font-extrabold py-4 text-xs flex flex-row justify-center items-center rounded-2xl">
+      <button
+        className="bg-secondary-btn text-text-secondary-btn font-inter font-extrabold py-4 text-xs flex flex-row justify-center items-center rounded-2xl"
+        onClick={handleBalanceUpdate}
+      >
         {isCompleted ? (
           <span>completed</span>
         ) : (

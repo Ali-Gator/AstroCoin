@@ -8,13 +8,13 @@ import alienPerEarth from '@/public/avatars/alien-per-earth.png';
 import { useBoundStore } from '@/store';
 
 export const Character: FC = () => {
-  const { balance } = useBoundStore((state) => state);
+  const { currentBalance } = useBoundStore((state) => state);
 
   return (
     <div className={styles.character}>
       <div className={styles.sumWrapper}>
         <Image className={styles.coin} src={token} alt={'main token'} />
-        <p className={styles.sum}>{balance.toFixed(2)}</p>
+        <p className={styles.sum}>{currentBalance.toLocaleString()}</p>
       </div>
       <div className={styles.subtitle}>
         <div className={styles.placeWrapper}>
