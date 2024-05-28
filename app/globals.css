@@ -21,8 +21,7 @@
   --loading-gradient-end: #FFFC00;
   --btn-background: rgba(46, 74, 197, 1);
 
-  /* added bg to see the edges of the screen */
-  background-color: rgb(111, 23, 23);
+  background-color: #121316;
 }
 
 * {
