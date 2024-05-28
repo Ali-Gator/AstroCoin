@@ -20,12 +20,7 @@ export const Character: FC = () => {
       </div>
       <div className={styles.subtitle}>
         <div className={styles.placeWrapper}>
-          <Image
-            className={styles.placeIcon}
-            src={firstPlace}
-            alt="First place"
-          />
-          <p className={styles.placeCount}>203,596</p>
+          <p className={styles.placeCount}>(0 🔥) </p>
         </div>
         <PlanetItem type={EPlanetType.Earth} />
       </div>
