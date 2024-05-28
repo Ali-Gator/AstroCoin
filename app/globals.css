@@ -15,10 +15,12 @@
   --background-color: #121316;
   --background-transparent-color01: rgba(255, 255, 255, 0.1);
   --background-transparent-color02: rgba(255, 255, 255, 0.2);
+  --background-transparent-color03: rgba(255, 255, 255, 0.3);
   --background-transparent-color05: rgba(255, 255, 255, 0.5);
+
   --main-text-color: #fff;
-  --loading-gradient-start: #FE6A26;
-  --loading-gradient-end: #FFFC00;
+  --loading-gradient-start: rgba(40, 40, 40, 1);
+  --loading-gradient-end: rgba(211, 211, 211, 1);
   --btn-background: rgba(46, 74, 197, 1);
 
   background-color: #121316;

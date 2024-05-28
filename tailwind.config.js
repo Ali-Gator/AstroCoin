@@ -56,6 +56,7 @@ module.exports = {
           transparent02: 'rgba(255, 255, 255, 0.2)',
           transparent05: 'rgba(255, 255, 255, 0.5)',
           transparent09: 'rgba(255, 255, 255, 0.9)',
+          gradient: 'rgba(92, 52, 134, 1)',
           cards: 'rgba(75, 79, 88, 1)',
         },
         text: {
@@ -63,8 +64,8 @@ module.exports = {
           'secondary-btn': '#fff',
         },
         gradient: {
-          start: '#FE6A26',
-          end: '#FFFC00',
+          start: 'rgba(40, 40, 40, 1)',
+          end: 'rgba(211, 211, 211, 1)',
         },
         button: {
           background: 'rgba(46, 74, 197, 1)',

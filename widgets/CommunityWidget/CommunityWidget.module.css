@@ -4,7 +4,7 @@
   flex-flow: row;
   padding: 16px;
   border-radius: 16px;
-  background: var(--background-transparent-color01);
+  background: var(--background-transparent-color03);
   gap: 16px;
 }
 

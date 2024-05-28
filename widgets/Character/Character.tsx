@@ -4,7 +4,7 @@ import Image from 'next/image';
 import token from '@/public/main-token.svg';
 import firstPlace from '@/public/icons/first-place.svg';
 import { EPlanetType, PlanetItem } from '@/components/PlanetItem';
-import alienEgg from '@/public/avatars/new-born-egg.png';
+import alienPerEarth from '@/public/avatars/alien-per-earth.png';
 import { useBoundStore } from '@/store';
 
 export const Character: FC = () => {
@@ -29,7 +29,7 @@ export const Character: FC = () => {
       </div>
       <Image
         className={styles.mainAvatar}
-        src={alienEgg}
+        src={alienPerEarth}
         alt="New borm alien inside egg"
         priority
       />
