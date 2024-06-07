@@ -1,6 +1,6 @@
 import { Task } from '../TasksList/types';
 import Image from 'next/image';
-import xsycoin from '@/public/icons/xsycoin.svg';
+import xsycoin from '@/public/main-token.svg';
 
 export const TaskItem = ({ task }: { task: Task }) => {
   const { title, date, image, reward, isCompleted } = task;
@@ -35,7 +35,7 @@ export const TaskItem = ({ task }: { task: Task }) => {
         ) : (
           <div className="flex flex-row items-center font-termina600 tracking-[0.03em] gap-2">
             <span>{reward.toLocaleString()}</span>
-            <Image src={xsycoin} alt="xsycoin" width={16} height={16} />
+            <Image src={xsycoin} alt="xsycoin" width={18} height={18} />
           </div>
         )}
       </button>
