@@ -6,8 +6,8 @@ import { sfPro } from './fonts';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'XSYCOIN TON',
-  description: 'Site about XSYCOIN',
+  title: 'AstraCoin',
+  description: 'This is AstraCoin universe',
 };
 
 export const viewport: Viewport = {
