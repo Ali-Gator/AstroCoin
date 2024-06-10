@@ -12,7 +12,7 @@ import classNames from 'classnames';
 export default function Home() {
   const { isLoading } = useTelegram();
 
-  return isLoading ? (
+  return !isLoading ? (
     <Loading />
   ) : (
     <main

@@ -6,6 +6,7 @@ export default function Loading() {
     <div className={styles.loading}>
       <Image src="/logo.svg" alt="AstraCoin Logo" width={164} height={20} />
       <div className={styles.animatedGradient} />
+      <p className="mt-[100px] text-xl opacity-40">It's just a game, maybe</p>
     </div>
   );
 }
