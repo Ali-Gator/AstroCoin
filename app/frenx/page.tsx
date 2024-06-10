@@ -9,6 +9,7 @@ import styles from './page.module.css';
 import { useContext } from 'react';
 import { PopupContext } from '@/helpers/providers/PopupProvider';
 import { Button } from '@/shared/ui/Button';
+import { useIsMounted } from 'usehooks-ts';
 
 const taskCardData1: ITaskCard = {
   title: 'Invite 5 frenx',
@@ -32,6 +33,7 @@ const renderInvitePopup = () => {
 };
 
 export default function Page() {
+  const isMounted = useIsMounted();
   const popupContext = useContext(PopupContext);
   return (
     <main className={styles.frenxWrapper}>
@@ -45,7 +47,8 @@ export default function Page() {
           popupContext.toggle?.();
         }}
       />
-      {createPortal(renderInvitePopup(), document.getElementById('popup')!)}
+      {isMounted() &&
+        createPortal(renderInvitePopup(), document.getElementById('popup')!)}
     </main>
   );
 }
