@@ -6,8 +6,8 @@ import { sfPro } from './fonts';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'AstraCoin',
-  description: 'This is AstraCoin universe',
+  title: 'AstroCoin',
+  description: 'This is AstroCoin universe',
 };
 
 export const viewport: Viewport = {

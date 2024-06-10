@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { EPlanetType, PlanetItem } from '@/components/PlanetItem';
 import alienPerEarth from '@/public/avatars/alien-per-earth.png';
 import { useBoundStore } from '@/store';
-import astraCoin from '@/public/main-token.svg';
+import astroCoin from '@/public/main-token.svg';
 
 export const Character: FC = () => {
   const { balance } = useBoundStore((state) => state);
@@ -12,7 +12,7 @@ export const Character: FC = () => {
   return (
     <div className={styles.character}>
       <div className={styles.sumWrapper}>
-        <Image width={40} src={astraCoin} alt={'main token'} />
+        <Image width={40} src={astroCoin} alt={'main token'} />
         <p className="font-termina700 text-[32px] leading-10 tracking-[0.03em]">
           {balance.toFixed(2).replace('.', ',')}
         </p>
