@@ -16,7 +16,7 @@ export const CommunityWidget: FC<ICommunityWidget> = ({
       <Image src={imageSrc} alt={imageAlt ?? ''} width={48} />
       <div className={styles.infoWrapper}>
         <p className="tracking-[0.03em] text-[13px] font-bold">
-          XSYCOIN COMMUNITY
+          ASTRO COMMUNITY
         </p>
         <div className={styles.tokenWrapper}>
           <p className={styles.sum}>{balance.toFixed(2)}</p>

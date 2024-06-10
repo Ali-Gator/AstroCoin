@@ -8,7 +8,7 @@ export function TonConnectProvider({
   children: React.ReactNode;
 }) {
   return (
-    <TonConnectUIProvider manifestUrl="https://xsycoin.vercel.app/tonconnect-manifest.json">
+    <TonConnectUIProvider manifestUrl="https://astrocoin.vercel.app/tonconnect-manifest.json">
       {children}
     </TonConnectUIProvider>
   );

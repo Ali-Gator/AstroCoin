@@ -4,7 +4,7 @@ import Image from 'next/image';
 export default function Loading() {
   return (
     <div className={styles.loading}>
-      <Image src="/logo.svg" alt="XSYCOIN Logo" width={260} height={12} />
+      <Image src="/logo.svg" alt="AstraCoin Logo" width={164} height={20} />
       <div className={styles.animatedGradient} />
     </div>
   );
