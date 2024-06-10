@@ -1,6 +1,6 @@
 .character {
   width: 100%;
-  margin-top: 32px;
+  margin-top: 35px;
 }
 
 .sumWrapper {
@@ -9,19 +9,6 @@
   flex-flow: row;
   justify-content: center;
   gap: 8px;
-}
-
-.coin {
-  width: 40px;
-  height: auto;
-}
-
-.sum {
-  font-family: var(--font-termina700);
-  font-size: 36px;
-  font-weight: 700;
-  line-height: 40px;
-  letter-spacing: 0.05em;
 }
 
 .subtitle {

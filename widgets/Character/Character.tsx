@@ -1,11 +1,11 @@
 import { FC } from 'react';
 import styles from './Character.module.css';
 import Image from 'next/image';
-import token from '@/public/main-token.svg';
 import firstPlace from '@/public/icons/first-place.svg';
 import { EPlanetType, PlanetItem } from '@/components/PlanetItem';
-import alienEgg from '@/public/avatars/new-born-egg.png';
+import alienPerEarth from '@/public/avatars/alien-per-earth.png';
 import { useBoundStore } from '@/store';
+import xsycoin from '@/public/main-token.svg';
 
 export const Character: FC = () => {
   const { balance } = useBoundStore((state) => state);
@@ -13,23 +13,20 @@ export const Character: FC = () => {
   return (
     <div className={styles.character}>
       <div className={styles.sumWrapper}>
-        <Image className={styles.coin} src={token} alt={'main token'} />
-        <p className={styles.sum}>{balance.toFixed(2)}</p>
+        <Image width={40} src={xsycoin} alt={'main token'} />
+        <p className="font-termina700 text-[32px] leading-10 tracking-[0.03em]">
+          {balance.toFixed(2).replace('.', ',')}
+        </p>
       </div>
       <div className={styles.subtitle}>
         <div className={styles.placeWrapper}>
-          <Image
-            className={styles.placeIcon}
-            src={firstPlace}
-            alt="First place"
-          />
-          <p className={styles.placeCount}>203,596</p>
+          <p className={styles.placeCount}>(0 🔥) </p>
         </div>
         <PlanetItem type={EPlanetType.Earth} />
       </div>
       <Image
         className={styles.mainAvatar}
-        src={alienEgg}
+        src={alienPerEarth}
         alt="New borm alien inside egg"
         priority
       />

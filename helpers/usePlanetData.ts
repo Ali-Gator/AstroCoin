@@ -2,6 +2,8 @@ import { EPlanetType } from '@/components/PlanetItem';
 import earth from '@/public/planets/earth.png';
 import mars from '@/public/planets/mars.png';
 import saturn from '@/public/planets/saturn.png';
+import kempel from '@/public/planets/kempel.png';
+import moon from '@/public/planets/moon.png';
 import { useMemo } from 'react';
 
 export const usePlanetData = (type: EPlanetType) =>
@@ -19,7 +21,7 @@ export const usePlanetData = (type: EPlanetType) =>
       }
 
       case EPlanetType.Moon: {
-        imageSrc = earth;
+        imageSrc = moon;
         imageAlt = EPlanetType.Moon;
         planetName = EPlanetType.Moon;
         break;
@@ -29,7 +31,6 @@ export const usePlanetData = (type: EPlanetType) =>
         imageSrc = mars;
         imageAlt = EPlanetType.Mars;
         planetName = EPlanetType.Mars;
-
         break;
       }
 
@@ -41,7 +42,7 @@ export const usePlanetData = (type: EPlanetType) =>
       }
 
       case EPlanetType.Kempel241: {
-        imageSrc = earth;
+        imageSrc = kempel;
         imageAlt = EPlanetType.Kempel241;
         planetName = EPlanetType.Kempel241;
         break;

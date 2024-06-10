@@ -13,9 +13,11 @@ export const CommunityWidget: FC<ICommunityWidget> = ({
   const { balance } = useBoundStore((state) => state);
   return (
     <div className={styles.communityWidget}>
-      <Image src={imageSrc} alt={imageAlt ?? ''} />
+      <Image src={imageSrc} alt={imageAlt ?? ''} width={48} />
       <div className={styles.infoWrapper}>
-        <p className={styles.title}>XSYCOIN COMMUNITY</p>
+        <p className="tracking-[0.03em] text-[13px] font-bold">
+          XSYCOIN COMMUNITY
+        </p>
         <div className={styles.tokenWrapper}>
           <p className={styles.sum}>{balance.toFixed(2)}</p>
           <Image className={styles.coin} src={token} alt={'main token'} />
