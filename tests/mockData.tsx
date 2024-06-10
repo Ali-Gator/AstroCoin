@@ -50,5 +50,6 @@ export const horizontalCardDataStore: IHorizontalCard[] = [
     description: 'Upgrade',
     quantity: 'lvl 2/3',
     price: '25,000',
+    isBlurred: true,
   },
 ];
