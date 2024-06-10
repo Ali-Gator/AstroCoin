@@ -1,10 +1,10 @@
 import Image from 'next/image';
 import { FC } from 'react';
 import { ICommunityWidget } from '@/widgets/CommunityWidget/types';
-import { EPlanetType, PlanetItem } from '@/components/PlanetItem';
 import styles from './CommunityWidget.module.css';
 import token from '@/public/main-token.svg';
 import { useBoundStore } from '@/store';
+import arrow from '@/public/icons/arrow-right.svg';
 
 export const CommunityWidget: FC<ICommunityWidget> = ({
   imageSrc,
@@ -23,7 +23,7 @@ export const CommunityWidget: FC<ICommunityWidget> = ({
           <Image className={styles.coin} src={token} alt={'main token'} />
         </div>
       </div>
-      <PlanetItem type={EPlanetType.Earth} />
+      <Image src={arrow} alt="" />
     </div>
   );
 };
