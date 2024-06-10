@@ -20,14 +20,14 @@ export default function Page() {
   return (
     <main className={styles.frenxWrapper}>
       <Image className={styles.tokenImage} src={token} alt="token" />
-      <p className={styles.title}>Earn more $XSY</p>
+      <p className={styles.title}>Earn more $Astra</p>
       <p className={styles.subtitle}>Full guide</p>
       <TaskCard additionalClass={styles.taskCard} {...taskCardData1} />
       <section className={styles.onboarding}>
         <p className={styles.heading}>Onboarding</p>
         <div className={styles.advertisement}>
           <p className={styles.subHeading}>Learn about TON blockchain</p>
-          <p className={styles.heading}>Exclusive Skin and 200K XSY</p>
+          <p className={styles.heading}>Exclusive Skin and 200K $Astra</p>
           <Link className={styles.link} href={AppRoutes.Home}>
             Learn about TON
           </Link>

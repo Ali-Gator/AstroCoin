@@ -1,13 +1,13 @@
 import { Task } from './types';
 import ton from '@/public/earn/tasks/ton.png';
 import smthTon from '@/public/earn/tasks/smth-ton.png';
-import xsyBlack from '@/public/earn/tasks/xsycoin-black.png';
+import astraCoin from '@/public/main-token.svg';
 
 export const tasks: Task[] = [
   {
-    title: 'Subscribe to XSYCOIN Community',
+    title: 'Subscribe to AstraCoin Community',
     date: 'May 12',
-    image: xsyBlack,
+    image: astraCoin,
     reward: 150000,
     isCompleted: false,
   },

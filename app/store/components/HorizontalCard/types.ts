@@ -6,4 +6,5 @@ export interface IHorizontalCard {
   description: string;
   quantity: string;
   price: string | null;
+  isBlurred?: boolean;
 }
