@@ -1,26 +1,30 @@
-import { FC } from 'react';
 import { ITaskCard } from '@/app/frenx/components/TaskCard/types';
-import classNames from 'classnames';
-import styles from './TaskCard.module.css';
-import Image from 'next/image';
-import taskIcon from '@/public/icons/potato.png';
-import token from '@/public/main-token.svg';
-import arrow from '@/public/icons/arrow-right.svg';
-import Link from 'next/link';
 import { AppRoutes } from '@/config/routes';
+import arrow from '@/public/icons/arrow-right.svg';
+import token from '@/public/main-token.svg';
+import classNames from 'classnames';
+import Image from 'next/image';
+import { FC } from 'react';
+import styles from './TaskCard.module.css';
 
 export const TaskCard: FC<ITaskCard> = ({
   additionalClass,
   title,
   description,
+  onClick,
 }) => {
   return (
-    <Link
+    <div
       className={classNames(additionalClass, styles.taskCardWrapper)}
-      href={AppRoutes.Home}
+      onClick={onClick}
     >
-      <div className={styles.imageWrapper}>
-        <Image className={styles.image} src={taskIcon} alt="task icon" />
+      <div
+        className={classNames(
+          styles.imageWrapper,
+          'text-3xl w-[48px] h-[48px] flex items-center justify-center',
+        )}
+      >
+        🧸
       </div>
       <div>
         <p className={styles.title}>{title}</p>
@@ -30,6 +34,6 @@ export const TaskCard: FC<ITaskCard> = ({
         </div>
       </div>
       <Image className={styles.rightArrow} src={arrow} alt={''} />
-    </Link>
+    </div>
   );
 };
