@@ -1,4 +1,4 @@
-import { Button } from '@/shared/ui/Button';
+import Link from 'next/link';
 
 export const InvitePopup = () => {
   return (
@@ -16,7 +16,12 @@ export const InvitePopup = () => {
           [ 2.5% ] of the mining earnings from the frens of those frens
         </p>
       </div>
-      <Button>Invite a friend</Button>
+      <Link
+        className="rounded-[14px] w-full uppercase text-black bg-white p-4 text-xl font-termina600 text-center"
+        href={`https://t.me/share/url?url=https://t.me/AstroCoinTon_bot?start=${Math.ceil(Math.random() * 100000)}&text=Look! What I have`}
+      >
+        Invite a fren
+      </Link>
     </div>
   );
 };
