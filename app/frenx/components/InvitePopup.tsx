@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export const InvitePopup = () => {
   return (
-    <div className="w-full h-full flex flex-col items-center justify-between">
+    <div className="w-full h-full flex flex-col items-center justify-between overflow-scroll">
       <div className="flex flex-col items-center">
         <p className="text-[32px] font-termina600">Invite your frens</p>
         <p className="text-2xl text-center">and enjoy incredible rewards:</p>
