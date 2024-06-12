@@ -10,10 +10,10 @@ export const InvitePopup = () => {
           [ 10% ] of the mining earnings from each fren you refer
         </p>
         <p className="text-lg mt-4 self-start">
-          [ 5% ] of the mining earnings from the frens they refer
+          [ 5% ] of the mining earnings from the frenx they refer
         </p>
         <p className="text-lg mt-4 self-start">
-          [ 2.5% ] of the mining earnings from the frens of those frens
+          [ 2.5% ] of the mining earnings from the frenx of those frenx
         </p>
       </div>
       <Link
