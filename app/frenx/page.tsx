@@ -8,33 +8,19 @@ import { ITaskCard } from './components/TaskCard/types';
 import styles from './page.module.css';
 import { useContext } from 'react';
 import { PopupContext } from '@/helpers/providers/PopupProvider';
-import { Button } from '@/shared/ui/Button';
 import { useIsMounted } from 'usehooks-ts';
+import { InvitePopup } from '@/app/frenx/components/InvitePopup';
 
 const taskCardData1: ITaskCard = {
   title: 'Invite 5 frenx',
   description: '100,000+',
 };
 
-const renderInvitePopup = () => {
-  return (
-    <div className="w-full h-full flex flex-col items-center justify-between">
-      <div className="flex flex-col items-center gap-20">
-        <span className="text-[32px] font-termina600 text-center">
-          Invite your friends
-        </span>
-        <span className="text-2xl font-sf-pro text-center">
-          Invite your friends and get 100,000 AstroCoins for each of them!
-        </span>
-      </div>
-      <Button>Invite a friend</Button>
-    </div>
-  );
-};
-
 export default function Page() {
   const isMounted = useIsMounted();
+
   const popupContext = useContext(PopupContext);
+
   return (
     <main className={styles.frenxWrapper}>
       <Image className={styles.tokenImage} src={token} alt="token" />
@@ -48,7 +34,7 @@ export default function Page() {
         }}
       />
       {isMounted() &&
-        createPortal(renderInvitePopup(), document.getElementById('popup')!)}
+        createPortal(<InvitePopup />, document.getElementById('popup')!)}
     </main>
   );
 }
