@@ -4,7 +4,7 @@ export interface IHorizontalCard {
   iconSrc: StaticImageData;
   title: string;
   description: string;
-  quantity: string;
+  quantity?: string;
   price: string | null;
   isBlurred?: boolean;
 }

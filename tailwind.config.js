@@ -76,6 +76,9 @@ module.exports = {
       maxWidth: {
         'screen-sm': '500px',
       },
+      blur: {
+        xs: '2px',
+      },
     },
   },
   plugins: [],
