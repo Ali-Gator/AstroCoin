@@ -18,7 +18,7 @@ export const HorizontalCard: FC<IHorizontalCard> = ({
         <Image className="" src={iconSrc} alt={title} width={26} height={26} />
       </div>
       <div>
-        <p className="text-sm">
+        <p className="text-md">
           {title}
           {isBlurred && <span className="text-xs opacity-50 ml-1">(soon)</span>}
         </p>
@@ -33,11 +33,11 @@ export const HorizontalCard: FC<IHorizontalCard> = ({
       </div>
       <button
         className={classNames(
-          'rounded-xl bg-black px-4 py-2 text-sm font-bold ml-auto',
+          'rounded-xl bg-black px-4 py-2 text-sm font-bold ml-auto min-w-[100px]',
           { 'blur-xs': isBlurred },
         )}
       >
-        {price ? price : 'USE'}
+        {price ? price : 'FREE'}
         {price && (
           <Image className="size-3 ml-2 inline-block" src={token} alt="token" />
         )}
