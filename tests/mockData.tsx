@@ -1,55 +1,45 @@
 import { IHorizontalCard } from '@/app/store/components/HorizontalCard';
-import energyDrink from '@/public/icons/energy-drink.png';
-import alienFruit from '@/public/icons/alien-fruit-food.png';
-import fuel from '@/public/icons/car-fuel.png';
-import burger from '@/public/icons/burger-toy.png';
-import cat from '@/public/icons/cat.png';
+import burgerBig from '@/public/icons/burger-big.png';
+import lightning from '@/public/icons/lightning.png';
+import hummers from '@/public/icons/hummers.png';
+import alienSmiling from '@/public/icons/alien-smiling.png';
+import rocket from '@/public/icons/rocket.png';
 
 export const horizontalCardDataFoost: IHorizontalCard[] = [
   {
-    iconSrc: energyDrink,
+    iconSrc: burgerBig,
     title: 'Food',
-    description: 'Boost energy',
-    quantity: '5/5',
-    price: '20,000',
-  },
-  {
-    iconSrc: alienFruit,
-    title: 'Bluelian-5',
     description: 'Full energy',
-    quantity: '2/3',
-    price: '25,000',
+    price: '500',
   },
   {
-    iconSrc: fuel,
-    title: 'Fuelist',
-    description: 'For boost',
-    quantity: '1/3',
+    iconSrc: lightning,
+    title: 'Energy 0/1',
+    description: '+25%',
     price: null,
   },
   {
-    iconSrc: burger,
-    title: 'Burgex',
-    description: 'When offline',
-    quantity: '1/3',
-    price: null,
+    iconSrc: hummers,
+    title: 'Storage Renovation',
+    description: 'Current level:',
+    quantity: '1/6',
+    price: '1,000',
+  },
+  {
+    iconSrc: alienSmiling,
+    title: 'Auto-Feeder 0/3',
+    description: 'available offline time: ',
+    quantity: '72hr',
+    price: '500',
   },
 ];
 
 export const horizontalCardDataStore: IHorizontalCard[] = [
   {
-    iconSrc: energyDrink,
-    title: 'Energy',
-    description: 'Upgrade',
-    quantity: ' lvl 5/5',
-    price: '20,000',
-  },
-  {
-    iconSrc: cat,
-    title: 'Cat supporter',
-    description: 'Upgrade',
-    quantity: 'lvl 2/3',
-    price: '25,000',
+    iconSrc: rocket,
+    title: 'Transfer',
+    description: 'Transfer to the next planet',
+    price: '500,000',
     isBlurred: true,
   },
 ];
