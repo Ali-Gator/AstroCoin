@@ -1,6 +1,5 @@
 'use client';
 
-import token from '@/public/main-token.svg';
 import Image from 'next/image';
 import { createPortal } from 'react-dom';
 import { TaskCard } from './components/TaskCard';
@@ -10,10 +9,11 @@ import { useContext } from 'react';
 import { PopupContext } from '@/helpers/providers/PopupProvider';
 import { useIsMounted } from 'usehooks-ts';
 import { InvitePopup } from '@/app/frenx/components/InvitePopup';
+import frenx from '@/public/icons/frenx.png';
 
 const taskCardData1: ITaskCard = {
-  title: 'Invite 5 frenx',
-  description: '100,000+',
+  title: 'Invite frenx',
+  description: '100,000',
 };
 
 export default function Page() {
@@ -23,9 +23,14 @@ export default function Page() {
 
   return (
     <main className={styles.frenxWrapper}>
-      <Image className={styles.tokenImage} src={token} alt="token" />
-      <p className={styles.title}>Earn more $Astro</p>
-      <p className={styles.subtitle}>Full guide</p>
+      <Image
+        className={styles.tokenImage}
+        src={frenx}
+        alt="frenx"
+        width={50}
+        height={50}
+      />
+      <p className={styles.title}>Your frenx</p>
       <TaskCard
         additionalClass={styles.taskCard}
         {...taskCardData1}
