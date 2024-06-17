@@ -1,39 +1,45 @@
-import styles from './page.module.css';
+'use client';
+
 import Image from 'next/image';
-import token from '@/public/main-token.svg';
+import { createPortal } from 'react-dom';
 import { TaskCard } from './components/TaskCard';
 import { ITaskCard } from './components/TaskCard/types';
-import Link from 'next/link';
-import { AppRoutes } from '@/config/routes';
+import styles from './page.module.css';
+import { useContext } from 'react';
+import { PopupContext } from '@/helpers/providers/PopupProvider';
+import { useIsMounted } from 'usehooks-ts';
+import { InvitePopup } from '@/app/frenx/components/InvitePopup';
+import frenx from '@/public/icons/frenx.png';
 
 const taskCardData1: ITaskCard = {
-  title: 'Invite bonus',
-  description: 'up to 100K',
-};
-
-const taskCardData2: ITaskCard = {
-  title: 'Invite 5 frenx',
-  description: '+100,000',
+  title: 'Invite frenx',
+  description: '100,000',
 };
 
 export default function Page() {
+  const isMounted = useIsMounted();
+
+  const popupContext = useContext(PopupContext);
+
   return (
     <main className={styles.frenxWrapper}>
-      <Image className={styles.tokenImage} src={token} alt="token" />
-      <p className={styles.title}>Earn more $XSY</p>
-      <p className={styles.subtitle}>Full guide</p>
-      <TaskCard additionalClass={styles.taskCard} {...taskCardData1} />
-      <section className={styles.onboarding}>
-        <p className={styles.heading}>Onboarding</p>
-        <div className={styles.advertisement}>
-          <p className={styles.subHeading}>Learn about TON blockchain</p>
-          <p className={styles.heading}>Exclusive Skin and 200K XSY</p>
-          <Link className={styles.link} href={AppRoutes.Home}>
-            Learn about TON
-          </Link>
-        </div>
-        <TaskCard additionalClass={styles.taskCard} {...taskCardData2} />
-      </section>
+      <Image
+        className={styles.tokenImage}
+        src={frenx}
+        alt="frenx"
+        width={50}
+        height={50}
+      />
+      <p className={styles.title}>Your frenx</p>
+      <TaskCard
+        additionalClass={styles.taskCard}
+        {...taskCardData1}
+        onClick={() => {
+          popupContext.toggle?.();
+        }}
+      />
+      {isMounted() &&
+        createPortal(<InvitePopup />, document.getElementById('popup')!)}
     </main>
   );
 }

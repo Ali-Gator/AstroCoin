@@ -10,7 +10,6 @@ export const createBalanceSlice: StateCreator<
 > = (set, get) => {
   setInterval(() => {
     set((state) => {
-      console.log('🚀 ~ set ~ state:', state);
       const currentEnergyLevel = state.currentEnergyLevel - 1;
       if (currentEnergyLevel < 0) {
         return state;
@@ -31,7 +30,6 @@ export const createBalanceSlice: StateCreator<
     const timePassed = state?.balanceUpdatedAt
       ? Date.now() - state.balanceUpdatedAt
       : 0;
-    console.log('🚀 ~ calculateCurrentBalance ~ timePassed:', timePassed);
     const balanceIncrement =
       (timePassed / MS_IN_SECOND) * (state?.tokenGain || 1);
     return (

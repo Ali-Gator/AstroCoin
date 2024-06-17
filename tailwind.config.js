@@ -4,6 +4,7 @@ module.exports = {
     './app/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './widgets/**/*.{js,ts,jsx,tsx,mdx}',
+    './shared/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     extend: {
@@ -48,6 +49,7 @@ module.exports = {
       backgroundColor: {
         secondary: '#4B4F58',
         'secondary-btn': '#000',
+        popup: '#252525',
       },
       colors: {
         background: {
@@ -73,6 +75,9 @@ module.exports = {
       },
       maxWidth: {
         'screen-sm': '500px',
+      },
+      blur: {
+        xs: '2px',
       },
     },
   },

@@ -14,4 +14,5 @@ export interface IHorizontalCard {
   capacity: number;
   price: number | null;
   boost?: BoostType;
+  isBlurred?: boolean;
 }

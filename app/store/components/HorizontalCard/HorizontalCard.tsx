@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { IHorizontalCard } from '@/app/store/components/HorizontalCard/types';
 import token from '@/public/main-token.svg';
 import { useBoundStore } from '@/store';
+import classNames from 'classnames';
 
 export const HorizontalCard: FC<IHorizontalCard> = ({
   iconSrc,
@@ -14,6 +15,7 @@ export const HorizontalCard: FC<IHorizontalCard> = ({
   capacity,
   price,
   boost,
+  isBlurred,
 }) => {
   const { refillEnergy } = useBoundStore((state) => state);
 
@@ -26,27 +28,27 @@ export const HorizontalCard: FC<IHorizontalCard> = ({
   };
 
   return (
-    <>
+    <div className="rounded-3xl bg-background-cards p-4 flex items-center gap-x-2">
       <div className="flex justify-center items-center size-12 rounded-2xl border border-solid border-background-transparent09 bg-background/60">
-        <Image className="" src={iconSrc} alt={title} />
+        <Image className="" src={iconSrc} alt={title} width={26} height={26} />
       </div>
       <div>
-        {/*<div className="flex justify-between items-center">*/}
-        <p className="text-xs font-medium">{title}</p>
-        <p className="text-[10px] text-white/90">
+        <p className="text-md">
+          {title}
+          {isBlurred && <span className="text-xs opacity-50 ml-1">(soon)</span>}
+        </p>
+        <p className="text-xs text-white/90">
           {description}
           <span className="text-xs font-medium inline-block ml-1">
             {quantity}/{capacity}
           </span>
         </p>
       </div>
-      {/*  <div className="flex justify-between items-center">*/}
-      {/*    <span className="text-[10px]">active for {period} hours</span>*/}
-      {/*    <span className="text-xs font-medium text-white/90">{quantity}</span>*/}
-      {/*  </div>*/}
-      {/*</div>*/}
       <button
-        className="rounded-xl bg-black px-2 py-2 text-xs font-bold"
+        className={classNames(
+          'rounded-xl bg-black px-4 py-2 text-sm font-bold ml-auto min-w-[100px]',
+          { 'blur-xs': isBlurred },
+        )}
         onClick={handleBoost}
       >
         {price ? price.toLocaleString() : 'FREE'}
@@ -54,6 +56,6 @@ export const HorizontalCard: FC<IHorizontalCard> = ({
           <Image className="size-3 ml-2 inline-block" src={token} alt="token" />
         )}
       </button>
-    </>
+    </div>
   );
 };

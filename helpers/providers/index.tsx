@@ -1,3 +1,4 @@
+import { PopupProvider } from './PopupProvider';
 import { TelegramProvider } from './TelegramContext';
 import { TonConnectProvider } from './TonConnectProvider';
 
@@ -8,7 +9,9 @@ export const ProvidersWrapper = ({
 }) => {
   return (
     <TonConnectProvider>
-      <TelegramProvider>{children}</TelegramProvider>
+      <TelegramProvider>
+        <PopupProvider>{children}</PopupProvider>
+      </TelegramProvider>
     </TonConnectProvider>
   );
 };

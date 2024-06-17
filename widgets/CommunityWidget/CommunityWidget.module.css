@@ -13,13 +13,6 @@
   flex-flow: column;
   margin-right: auto;
 
-  .title {
-    font-size: 13px;
-    font-weight: 900;
-    line-height: 20px;
-    color: rgba(255, 255, 255, 0.8);
-  }
-
   .tokenWrapper {
     display: flex;
     align-items: center;
