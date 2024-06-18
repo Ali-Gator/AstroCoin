@@ -19,9 +19,6 @@ export const TelegramProvider = ({
   const pathname = usePathname();
 
   useEffect(() => {
-    const goBack = () => {
-      router.back();
-    };
     const app = window.Telegram;
 
     if (app) {

@@ -8,9 +8,17 @@ import { Menu } from '@/widgets/Menu';
 import community from '../public/avatars/community.png';
 import styles from './page.module.css';
 import classNames from 'classnames';
+import { useEffect } from 'react';
 
 export default function Home() {
-  const { isLoading } = useTelegram();
+  const { isLoading, telegramApp } = useTelegram();
+
+  useEffect(() => {
+    if (telegramApp) {
+      const telegramId = telegramApp.WebApp.initDataUnsafe.user?.id || 1;
+      console.log('🚀 ~ useEffect ~ telegramId:', telegramId);
+    }
+  });
 
   return isLoading ? (
     <Loading />
