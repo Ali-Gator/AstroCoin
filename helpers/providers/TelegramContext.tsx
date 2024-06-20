@@ -1,7 +1,9 @@
 'use client';
+
 import Script from 'next/script';
 import { createContext, useContext, useEffect, useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
+import { useBoundStore } from '@/store';
 
 export const TelegramContext = createContext<{
   telegramApp?: Telegram;
@@ -17,6 +19,7 @@ export const TelegramProvider = ({
   const [isLoading, setLoading] = useState(true);
   const router = useRouter();
   const pathname = usePathname();
+  const { setTelegramId } = useBoundStore();
 
   useEffect(() => {
     const app = window.Telegram;
@@ -29,8 +32,11 @@ export const TelegramProvider = ({
       setLoading(false);
       app.WebApp.setHeaderColor('#000');
       app.WebApp.setBackgroundColor('#000');
+
+      const userId = app.WebApp.initDataUnsafe.user?.id;
+      setTelegramId(userId?.toString());
     }
-  }, []);
+  }, [setTelegramId]);
 
   useEffect(() => {
     if (!webApp) {

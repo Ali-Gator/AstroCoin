@@ -1,10 +1,12 @@
-import { pgTable, serial, text, varchar } from 'drizzle-orm/pg-core';
+import { sql } from 'drizzle-orm';
+import { pgTable, serial, text, timestamp } from 'drizzle-orm/pg-core';
 
 export const users = pgTable('users', {
   id: serial('id').primaryKey(),
-  username: text('username'),
-  telegramId: text('telegram_id').notNull(),
-  createdAt: varchar('created_at').notNull(),
+  telegramId: text('telegram_id').notNull().unique(),
+  createdAt: timestamp('created_at')
+    .notNull()
+    .default(sql`now()`),
 });
 
 export type InsertUser = typeof users.$inferInsert;

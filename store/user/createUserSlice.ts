@@ -1,6 +1,7 @@
 import { StateCreator } from 'zustand';
 import { UserSlice } from './type';
 import { db, users } from '@/db';
+import axios from 'axios';
 
 export const createUserSlice: StateCreator<UserSlice, [], [], UserSlice> = (
   set,
@@ -8,16 +9,24 @@ export const createUserSlice: StateCreator<UserSlice, [], [], UserSlice> = (
 ) => {
   return {
     username: '',
-    telegramId: '',
+    telegramId: null,
 
-    fetchUser: async (telegramId: string) => {
-      const allUsers = await db.select().from(users);
-      console.log('🚀 ~ fetchUser: ~ allUsers:', allUsers);
-      const user = allUsers.find((user) => user.telegramId === telegramId);
-      if (user) {
-        return user;
+    setTelegramId: (telegramId?: string) => {
+      set((state) => ({ ...state, telegramId: telegramId || null }));
+      if (telegramId) {
+        get().fetchUser(telegramId);
       }
-      return null;
+    },
+    fetchUser: async (telegramId: string) => {
+      const { data: allUsers } = await axios.post('api/users', {
+        telegramId,
+      });
+      console.log('🚀 ~ fetchUser: ~ allUsers:', allUsers);
+      // const user = allUsers.find((user) => user.telegramId === telegramId);
+      // if (user) {
+      //   return user;
+      // }
+      // return null;
     },
   };
 };
