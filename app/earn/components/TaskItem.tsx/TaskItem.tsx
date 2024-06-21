@@ -1,11 +1,20 @@
-import { Task } from '../TasksList/types';
+import { ITask } from '../TasksList/types';
 import Image from 'next/image';
 import { useBoundStore } from '@/store';
-import astroCoin from '@/public/main-token.svg';
+import { FC } from 'react';
+import tokenLogo from '@/public/main-token.svg';
+import arrow from '@/public/icons/arrow-right.svg';
+import Link from 'next/link';
 
-export const TaskItem = ({ task }: { task: Task }) => {
+export const TaskItem: FC<ITask> = ({
+  id,
+  title,
+  image,
+  color,
+  reward,
+  isCompleted,
+}) => {
   const { addToBalance } = useBoundStore((state) => state);
-  const { title, date, image, reward, isCompleted } = task;
 
   const handleBalanceUpdate = () => {
     if (!isCompleted) {
@@ -14,42 +23,23 @@ export const TaskItem = ({ task }: { task: Task }) => {
   };
 
   return (
-    <div className="flex flex-col items-stretch gap-3 w-full py-3 px-4 rounded-3xl font-inter bg-secondary font-bold">
-      <div className="flex flex-row gap-3">
+    <Link
+      className={`flex items-center w-full py-3 px-4 rounded-3xl font-normal bg-[${color}]`}
+      href={`/earn/${id}`}
+    >
+      <Image src={image} alt={title} width={48} height={48} />
+      <p className="ml-2">{title}</p>
+      <div className="flex ml-auto">
+        <span className="text-xs text-white/80">{`up to ${reward}`}</span>
         <Image
-          src={image}
-          alt={title}
-          width={44}
-          height={44}
-          className="min-w-11 h-11 my-auto"
+          className="ml-1"
+          src={tokenLogo}
+          alt="token logo"
+          width={12}
+          height={12}
         />
-        <div className="flex flex-col items-stretch w-full">
-          <div className="flex flex-row justify-between items-end w-full h-6">
-            <span className="font-sf-pro font-medium opacity-80 text-xs">
-              Task:
-            </span>
-            <span className="font-sf-pro font-medium opacity-80 text-xs">
-              {date}
-            </span>
-          </div>
-          <span className="leading-6 text-md font-sf-pro font-normal tracking-[0.07em]">
-            {title}
-          </span>
-        </div>
+        <Image className="ml-4" src={arrow} alt={''} width={16} height={16} />
       </div>
-      <button
-        className="bg-secondary-btn text-text-secondary-btn font-inter font-extrabold py-4 text-xs flex flex-row justify-center items-center rounded-2xl"
-        onClick={handleBalanceUpdate}
-      >
-        {isCompleted ? (
-          <span>completed</span>
-        ) : (
-          <div className="flex flex-row items-center font-termina600 tracking-[0.03em] gap-2">
-            <span>{reward.toLocaleString()}</span>
-            <Image src={astroCoin} alt="astroCoin" width={18} height={18} />
-          </div>
-        )}
-      </button>
-    </div>
+    </Link>
   );
 };
