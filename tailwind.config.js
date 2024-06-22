@@ -64,6 +64,7 @@ module.exports = {
         text: {
           DEFAULT: '#fff',
           'secondary-btn': '#fff',
+          accent: '#EDDF23',
         },
         gradient: {
           start: 'rgba(40, 40, 40, 1)',

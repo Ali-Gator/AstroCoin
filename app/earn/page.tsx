@@ -7,17 +7,12 @@ import {
   useTonAddress,
   useTonWallet,
 } from '@tonconnect/ui-react';
-import { useEffect } from 'react';
 
 export default function EarnPage() {
   const address = useTonAddress();
   const wallet = useTonWallet();
 
-  useEffect(() => {
-    fetch('./earn/tasks.json')
-      .then((response) => response.json())
-      .then((json) => console.log(json));
-  }, []);
+  console.log('wallet: ', wallet);
 
   return (
     <div className="w-full flex flex-col items-center gap-8 p-4">
@@ -27,7 +22,6 @@ export default function EarnPage() {
         <TonConnectButton />
       </div>
       {address && <span>{address}</span>}
-      {wallet && <span>{JSON.stringify(wallet, undefined, 2)}</span>}
     </div>
   );
 }
