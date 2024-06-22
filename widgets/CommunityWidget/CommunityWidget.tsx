@@ -10,7 +10,7 @@ export const CommunityWidget: FC<ICommunityWidget> = ({
   imageSrc,
   imageAlt,
 }) => {
-  const { balance } = useBoundStore((state) => state);
+  const { currentBalance } = useBoundStore((state) => state);
   return (
     <div className={styles.communityWidget}>
       <Image src={imageSrc} alt={imageAlt ?? ''} width={48} />
@@ -19,7 +19,7 @@ export const CommunityWidget: FC<ICommunityWidget> = ({
           ASTRO COMMUNITY
         </p>
         <div className={styles.tokenWrapper}>
-          <p className={styles.sum}>{balance.toFixed(2)}</p>
+          <p className={styles.sum}>{currentBalance.toLocaleString()}</p>
           <Image className={styles.coin} src={token} alt={'main token'} />
         </div>
       </div>

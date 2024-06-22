@@ -5,9 +5,9 @@ import { Character } from '@/widgets/Character';
 import { CommunityWidget } from '@/widgets/CommunityWidget';
 import { Energy } from '@/widgets/Energy';
 import { Menu } from '@/widgets/Menu';
+import classNames from 'classnames';
 import community from '../public/avatars/community.png';
 import styles from './page.module.css';
-import classNames from 'classnames';
 
 export default function Home() {
   const { isLoading } = useTelegram();
