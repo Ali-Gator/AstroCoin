@@ -1,7 +1,10 @@
+'use client';
+
 import { FC } from 'react';
 import Image from 'next/image';
 import { IHorizontalCard } from '@/app/store/components/HorizontalCard/types';
 import token from '@/public/main-token.svg';
+import { useBoundStore } from '@/store';
 import classNames from 'classnames';
 
 export const HorizontalCard: FC<IHorizontalCard> = ({
@@ -9,9 +12,21 @@ export const HorizontalCard: FC<IHorizontalCard> = ({
   title,
   description,
   quantity,
+  capacity,
   price,
+  boost,
   isBlurred,
 }) => {
+  const { refillEnergy } = useBoundStore((state) => state);
+
+  const handleBoost = () => {
+    if (quantity > 0) {
+      if (boost?.type === 'energy') {
+        refillEnergy();
+      }
+    }
+  };
+
   return (
     <div className="rounded-3xl bg-background-cards p-4 flex items-center gap-x-2">
       <div className="flex justify-center items-center size-12 rounded-2xl border border-solid border-background-transparent09 bg-background/60">
@@ -24,11 +39,9 @@ export const HorizontalCard: FC<IHorizontalCard> = ({
         </p>
         <p className="text-xs text-white/90">
           {description}
-          {quantity && (
-            <span className="text-xs font-medium inline-block ml-1">
-              {quantity}
-            </span>
-          )}
+          <span className="text-xs font-medium inline-block ml-1">
+            {quantity}/{capacity}
+          </span>
         </p>
       </div>
       <button
@@ -36,8 +49,9 @@ export const HorizontalCard: FC<IHorizontalCard> = ({
           'rounded-xl bg-black px-4 py-2 text-sm font-bold ml-auto min-w-[100px]',
           { 'blur-xs': isBlurred },
         )}
+        onClick={handleBoost}
       >
-        {price ? price : 'FREE'}
+        {price ? price.toLocaleString() : 'FREE'}
         {price && (
           <Image className="size-3 ml-2 inline-block" src={token} alt="token" />
         )}

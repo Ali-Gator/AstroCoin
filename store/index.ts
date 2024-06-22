@@ -1,6 +1,10 @@
 import { create } from 'zustand';
-import { CoinSlice, createCoinSlice } from './coin';
+import { BalanceSlice, createBalanceSlice } from './balance';
+import { createBoostsSlice } from './boosts';
+import { UserSlice, createUserSlice } from './user';
 
-export const useBoundStore = create<CoinSlice>()((...a) => ({
-  ...createCoinSlice(...a),
+export const useBoundStore = create<BalanceSlice & UserSlice>((...a) => ({
+  ...createBalanceSlice(...a),
+  ...createBoostsSlice(...a),
+  ...createUserSlice(...a),
 }));
