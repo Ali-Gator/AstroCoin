@@ -1,32 +1,31 @@
 import { StateCreator } from 'zustand';
 import { UserSlice } from './type';
-import { db, users } from '@/db';
 import axios from 'axios';
+import { BalanceSlice } from '../balance';
 
-export const createUserSlice: StateCreator<UserSlice, [], [], UserSlice> = (
-  set,
-  get,
-) => {
+export const createUserSlice: StateCreator<
+  UserSlice & BalanceSlice,
+  [],
+  [],
+  UserSlice
+> = (set, get) => {
   return {
     username: '',
     telegramId: null,
+    currentUser: null,
 
     setTelegramId: (telegramId?: string) => {
       set((state) => ({ ...state, telegramId: telegramId || null }));
       if (telegramId) {
         get().fetchUser(telegramId);
+        get().fetchBalance(telegramId);
       }
     },
     fetchUser: async (telegramId: string) => {
-      const { data: allUsers } = await axios.post('api/users', {
+      const { data: currentUser } = await axios.post('api/users', {
         telegramId,
       });
-      console.log('🚀 ~ fetchUser: ~ allUsers:', allUsers);
-      // const user = allUsers.find((user) => user.telegramId === telegramId);
-      // if (user) {
-      //   return user;
-      // }
-      // return null;
+      set((state) => ({ ...state, currentUser }));
     },
   };
 };

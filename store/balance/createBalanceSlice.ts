@@ -1,6 +1,7 @@
 import { StateCreator } from 'zustand';
 import { BalanceSlice } from './type';
 import { MS_IN_SECOND } from '@/helpers/constants/time';
+import axios from 'axios';
 
 export const createBalanceSlice: StateCreator<
   BalanceSlice,
@@ -43,15 +44,12 @@ export const createBalanceSlice: StateCreator<
 
     currentBalance: calculateCurrentBalance(get()),
 
-    tokenGain: 2,
-    slowEnergySince: null,
-    slowEnergyMultiplicator: 1.5,
+    tokenGain: 1,
 
     staticEnergyLevel: 1000,
-    energyLevelUpdatedAt: Date.now(),
-
     currentEnergyLevel: 1000,
     energyCapacity: 1000,
+    energyLevelUpdatedAt: Date.now(),
 
     addToBalance: (increment: number) =>
       set((state) => ({
@@ -80,11 +78,20 @@ export const createBalanceSlice: StateCreator<
         staticEnergyLevel: state.energyCapacity,
         energyLevelUpdatedAt: Date.now(),
       })),
-    slowDownEnergy: () =>
+    fetchBalance: async (telegramId: string) => {
+      const { data: balance } = await axios.post('api/balance', {
+        telegramId,
+      });
+      const { staticBalance, tokenGain, staticEnergyLevel, energyCapacity } =
+        balance;
+      console.log('🚀 ~ fetchBalance: ~ balance:', balance);
       set((state) => ({
         ...state,
-        slowEnergySince: Date.now(),
-        tokenGain: state.tokenGain * state.slowEnergyMultiplicator,
-      })),
+        staticBalance,
+        tokenGain,
+        staticEnergyLevel,
+        energyCapacity,
+      }));
+    },
   };
 };

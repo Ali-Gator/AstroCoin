@@ -1,0 +1,17 @@
+import { initializeBalance, getBalanceByTelegramId } from '@/db';
+import { NextResponse } from 'next/server';
+
+export async function POST(req: Request) {
+  const { telegramId } = await req.json();
+  const balance = await getBalanceByTelegramId(telegramId);
+  console.log('🚀 ~ POST ~ balance:', balance);
+
+  if (!balance || balance.length === 0) {
+    const newBalance = await initializeBalance({
+      ownerTelegramId: telegramId,
+    });
+    return NextResponse.json(newBalance);
+  } else {
+    return NextResponse.json(balance[0]);
+  }
+}
