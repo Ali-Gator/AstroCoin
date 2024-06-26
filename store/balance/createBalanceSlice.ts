@@ -11,6 +11,7 @@ export const createBalanceSlice: StateCreator<
 > = (set, get) => {
   setInterval(() => {
     set((state) => {
+      if (!state) return {};
       const currentEnergyLevel = state.currentEnergyLevel - 1;
       if (currentEnergyLevel < 0) {
         return state;
@@ -27,22 +28,34 @@ export const createBalanceSlice: StateCreator<
     Calculate current balance based on time passed since last balance update
     TODO: Should include all the boosters and other factors that can affect the balance
   */
-  const calculateCurrentBalance = (state: BalanceSlice) => {
-    const timePassed = state?.balanceUpdatedAt
-      ? Date.now() - state.balanceUpdatedAt
-      : 0;
-    const balanceIncrement =
-      (timePassed / MS_IN_SECOND) * (state?.tokenGain || 1);
-    return (
-      (state?.staticBalance || state?.currentBalance || 0) + balanceIncrement
-    );
+  const calculateCurrentBalance = (
+    state: BalanceSlice,
+  ): Partial<BalanceSlice> => {
+    const dateString = state?.balanceUpdatedAt;
+    let secondsPassed = 0;
+    if (dateString) {
+      const dateObject = new Date(dateString);
+      const timestamp = dateObject.getTime();
+      secondsPassed = Math.floor((Date.now() - timestamp) / MS_IN_SECOND);
+    } else {
+      secondsPassed = 0;
+    }
+    const maxSecondsPassed =
+      secondsPassed > state.staticEnergyLevel
+        ? state.staticEnergyLevel
+        : secondsPassed;
+    return {
+      currentBalance: state.staticBalance + maxSecondsPassed * state.tokenGain,
+      currentEnergyLevel: state.staticEnergyLevel - maxSecondsPassed,
+      tokenGain: state.tokenGain,
+    };
   };
 
   return {
     staticBalance: 0,
     balanceUpdatedAt: Date.now(),
 
-    currentBalance: calculateCurrentBalance(get()),
+    currentBalance: 0,
 
     tokenGain: 1,
 
@@ -79,19 +92,20 @@ export const createBalanceSlice: StateCreator<
         energyLevelUpdatedAt: Date.now(),
       })),
     fetchBalance: async (telegramId: string) => {
-      const { data: balance } = await axios.post('api/balance', {
+      const { data: fetchedBalance } = await axios.post('api/balance', {
         telegramId,
       });
-      const { staticBalance, tokenGain, staticEnergyLevel, energyCapacity } =
-        balance;
-      console.log('🚀 ~ fetchBalance: ~ balance:', balance);
-      set((state) => ({
-        ...state,
-        staticBalance,
-        tokenGain,
-        staticEnergyLevel,
-        energyCapacity,
-      }));
+      console.log('🚀 ~ fetchBalance: ~ fetchedBalance:', fetchedBalance);
+      set((state) => {
+        const recalculatedBalance = calculateCurrentBalance({
+          ...state,
+          ...fetchedBalance,
+        });
+        return {
+          ...state,
+          ...recalculatedBalance,
+        };
+      });
     },
   };
 };
