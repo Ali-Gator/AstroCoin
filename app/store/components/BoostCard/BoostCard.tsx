@@ -2,29 +2,27 @@
 
 import { FC } from 'react';
 import Image from 'next/image';
-import { IHorizontalCard } from '@/app/store/components/HorizontalCard/types';
 import token from '@/public/main-token.svg';
 import { useBoundStore } from '@/store';
 import classNames from 'classnames';
+import { BoostInterface } from '@/store/boosts';
 
-export const HorizontalCard: FC<IHorizontalCard> = ({
-  iconSrc,
-  title,
-  description,
-  quantity,
-  capacity,
-  price,
-  boost,
-  isBlurred,
-}) => {
-  const { refillEnergy } = useBoundStore((state) => state);
+export const BoostCard: FC<BoostInterface> = (boost) => {
+  const {
+    iconSrc,
+    title,
+    description,
+    itemsLeft,
+    maxItems,
+    price,
+    isBlurred,
+    type,
+  } = boost;
+  console.log('🚀 ~ boost:', boost);
+  const { utilizeBoost, getPotentialIncome } = useBoundStore((state) => state);
 
   const handleBoost = () => {
-    if (quantity > 0) {
-      if (boost?.type === 'energy') {
-        refillEnergy();
-      }
-    }
+    utilizeBoost(type);
   };
 
   return (
@@ -40,7 +38,7 @@ export const HorizontalCard: FC<IHorizontalCard> = ({
         <p className="text-xs text-white/90">
           {description}
           <span className="text-xs font-medium inline-block ml-1">
-            {quantity}/{capacity}
+            {itemsLeft}/{maxItems}
           </span>
         </p>
       </div>
@@ -51,8 +49,10 @@ export const HorizontalCard: FC<IHorizontalCard> = ({
         )}
         onClick={handleBoost}
       >
-        {price ? price.toLocaleString() : 'FREE'}
-        {price && (
+        {price === 'free'
+          ? 'FREE'
+          : (price * getPotentialIncome()).toLocaleString()}
+        {price !== 'free' && (
           <Image className="size-3 ml-2 inline-block" src={token} alt="token" />
         )}
       </button>

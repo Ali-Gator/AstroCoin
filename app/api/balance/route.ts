@@ -1,4 +1,4 @@
-import { initializeBalance, getBalanceByTelegramId } from '@/db';
+import { initializeBalance, getBalanceByTelegramId, updateBalance } from '@/db';
 import { NextResponse } from 'next/server';
 
 export async function POST(req: Request) {
@@ -13,5 +13,15 @@ export async function POST(req: Request) {
     return NextResponse.json(newBalance);
   } else {
     return NextResponse.json(balance[0]);
+  }
+}
+
+export async function PUT(req: Request) {
+  const { telegramId, newBalance } = await req.json();
+  try {
+    const balance = await updateBalance(newBalance, telegramId);
+    return NextResponse.json(balance);
+  } catch (error) {
+    return NextResponse.json({ message: 'Error updating balance' });
   }
 }

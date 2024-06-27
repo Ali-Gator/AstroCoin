@@ -2,9 +2,11 @@ import { StateCreator } from 'zustand';
 import { BalanceSlice } from './type';
 import { MS_IN_SECOND } from '@/helpers/constants/time';
 import axios from 'axios';
+import { UserSlice } from '../user';
+import { InsertBalance } from '@/db';
 
 export const createBalanceSlice: StateCreator<
-  BalanceSlice,
+  BalanceSlice & UserSlice,
   [],
   [],
   BalanceSlice
@@ -68,11 +70,19 @@ export const createBalanceSlice: StateCreator<
       set((state) => ({
         ...state,
         currentBalance: state.currentBalance + increment,
-        balanceUpdatedAt: Date.now(),
       })),
-    addEnergy: (increment: number) =>
+    removeFromBalance: (decrement: number) =>
       set((state) => {
-        const potentialEnergy = state.currentEnergyLevel + increment;
+        return {
+          ...state,
+          currentBalance: state.currentBalance - decrement,
+        };
+      }),
+    addEnergy: (percentageIncrement: number) =>
+      set((state) => {
+        // percentageIncrement is a number between 0 and 1
+        const potentialEnergy =
+          state.currentEnergyLevel + state.energyCapacity * percentageIncrement;
         const newEnergyLevel =
           potentialEnergy > state.energyCapacity
             ? state.energyCapacity
@@ -80,17 +90,41 @@ export const createBalanceSlice: StateCreator<
         return {
           ...state,
           currentEnergyLevel: newEnergyLevel,
-          staticEnergyLevel: newEnergyLevel,
-          energyLevelUpdatedAt: Date.now(),
         };
       }),
-    refillEnergy: () =>
+    getPotentialIncome: () => {
+      const { tokenGain, energyCapacity } = get();
+      return tokenGain * energyCapacity;
+    },
+    updateBalance: async () => {
+      const {
+        telegramId,
+        currentBalance,
+        currentEnergyLevel,
+        energyCapacity,
+        tokenGain,
+      } = get();
+      if (!telegramId) return;
+      const newBalance = {
+        staticBalance: currentBalance,
+        staticEnergyLevel: currentEnergyLevel,
+        energyCapacity: energyCapacity,
+        tokenGain: tokenGain,
+      } as Partial<InsertBalance>;
+      const { status, data } = await axios.put('api/balance', {
+        telegramId,
+        newBalance,
+      });
+      console.log('🚀 ~ updateBalance: ~ data:', data);
+      console.log('🚀 ~ updateBalance: ~ status:', status);
+    },
+    refillEnergy: () => {
       set((state) => ({
         ...state,
         currentEnergyLevel: state.energyCapacity,
-        staticEnergyLevel: state.energyCapacity,
-        energyLevelUpdatedAt: Date.now(),
-      })),
+      }));
+      console.log('refill', get());
+    },
     fetchBalance: async (telegramId: string) => {
       const { data: fetchedBalance } = await axios.post('api/balance', {
         telegramId,
@@ -104,6 +138,7 @@ export const createBalanceSlice: StateCreator<
         return {
           ...state,
           ...recalculatedBalance,
+          id: fetchedBalance.id,
         };
       });
     },

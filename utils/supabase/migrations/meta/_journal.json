@@ -29,6 +29,20 @@
       "when": 1719330215650,
       "tag": "0003_chief_wong",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1719497493956,
+      "tag": "0004_narrow_makkari",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1719498553661,
+      "tag": "0005_handy_night_nurse",
+      "breakpoints": true
     }
   ]
 }

@@ -1,4 +1,5 @@
 export interface BalanceSlice {
+  id?: number; // db id
   staticBalance: number; // balance before new session of farming started
   balanceUpdatedAt: number; // timestamp when staticBalance was updated
 
@@ -12,6 +13,8 @@ export interface BalanceSlice {
   energyCapacity: number; // max energy capacity; default = 1000
 
   addToBalance: (increment: number) => void;
+  removeFromBalance: (increment: number) => void;
+  getPotentialIncome: () => number;
   addEnergy: (increment: number) => void;
   refillEnergy: () => void;
   fetchBalance: (telegramId: string) => Promise<void>;
