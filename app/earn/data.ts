@@ -1,4 +1,4 @@
-import { ITask } from './types';
+import { ITask } from './components/TasksList/types';
 import tonColor from '@/public/earn/tasks/ton-color.png';
 
 export const tasks: ITask[] = [
@@ -7,7 +7,7 @@ export const tasks: ITask[] = [
     title: 'How to build on TON?',
     image: tonColor,
     color: '#24A1DEA8',
-    reward: 150000,
+    reward: 15000,
     isCompleted: false,
     steps: [
       {
