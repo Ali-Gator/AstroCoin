@@ -11,7 +11,7 @@ export const tasks: ITask[] = [
     isCompleted: false,
     steps: [
       {
-        question: '1. What is blockchain?',
+        question: 'What is blockchain?',
         description:
           'A blockchain is a decentralized, distributed digital ledger used to record transactions across many computers. It ensures that the recorded transactions cannot be altered retroactively, making it secure and transparent. Each block in the chain contains a number of transactions, and every time a new transaction occurs on the blockchain, a record of that transaction is added to every participant’s ledger.',
         answers: [
