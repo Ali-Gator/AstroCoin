@@ -15,41 +15,47 @@ export const createBoostsSlice: StateCreator<
     boosts: boostsData,
     isPlaceholder: true,
 
-    utilizeBoost: (boostType: BoostType) => {
+    utilizeBoost: async (boostType: BoostType) => {
+      const boost = get().boosts[boostType];
+      if (boost.itemsLeft === 0) return;
+      const {
+        removeFromBalance,
+        getPotentialIncome,
+        addEnergy,
+        refillEnergy,
+        currentBalance,
+        updateBalance,
+      } = get();
+      const price =
+        boost.price === 'free' ? 0 : boost.price * getPotentialIncome();
+      if (currentBalance < price) return;
+      removeFromBalance(price);
+      switch (boost.type) {
+        case BoostType.ENERGY:
+          addEnergy(0.25);
+          break;
+        case BoostType.FOOD:
+          refillEnergy();
+          break;
+      }
+      updateBalance();
+      const newItemsLeft = boost.itemsLeft - 1;
       set((state) => {
-        const boost = state.boosts[boostType];
-        if (boost.itemsLeft === 0) {
-          return state;
-        } else {
-          const {
-            removeFromBalance,
-            getPotentialIncome,
-            addEnergy,
-            refillEnergy,
-            currentBalance,
-          } = get();
-          const price =
-            boost.price === 'free' ? 0 : boost.price * getPotentialIncome();
-          if (currentBalance < price) return state;
-          removeFromBalance(price);
-          console.log('🚀 ~ set ~ type:', boost.type);
-          switch (boost.type) {
-            case BoostType.ENERGY:
-              addEnergy(0.25);
-              break;
-            case BoostType.FOOD:
-              refillEnergy();
-              break;
-          }
-        }
         return {
           ...state,
           boosts: {
             ...state.boosts,
-            [boostType]: { ...boost, itemsLeft: boost.itemsLeft - 1 },
+            [boostType]: { ...boost, itemsLeft: newItemsLeft },
           },
         };
       });
+      const { data, status } = await axios.post('api/boosts', {
+        telegramId: get().telegramId,
+        itemsLeft: newItemsLeft,
+        boostType,
+      });
+      console.log('🚀 ~ utilizeBoost: ~ data:', data);
+      console.log('🚀 ~ utilizeBoost: ~ status:', status);
     },
     fetchBoosts: async () => {
       const telegramId = get().telegramId;

@@ -1,12 +1,21 @@
 import { SelectBoosts, boosts, db } from '@/db';
 import { BoostType } from '@/store/boosts';
-import { eq, sql } from 'drizzle-orm';
+import { and, eq, sql } from 'drizzle-orm';
 
-export async function utilizeBoost(boostType: BoostType, itemsLeft: number) {
+export async function utilizeBoost(
+  boostType: BoostType,
+  itemsLeft: number,
+  ownerTelegramId: SelectBoosts['ownerTelegramId'],
+) {
   await db
     .update(boosts)
     .set({ itemsLeft, updatedAt: sql`now()` })
-    .where(eq(boosts.type, boostType))
+    .where(
+      and(
+        eq(boosts.type, boostType),
+        eq(boosts.ownerTelegramId, ownerTelegramId),
+      ),
+    )
     .returning();
 }
 

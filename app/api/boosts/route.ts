@@ -14,8 +14,8 @@ export async function POST(req: Request) {
 }
 
 export async function PUT(req: Request) {
-  const { telegramId, itemsLeft } = await req.json();
-  const updatedBoosts = await utilizeBoost(telegramId, itemsLeft);
+  const { telegramId, itemsLeft, boostType } = await req.json();
+  const updatedBoosts = await utilizeBoost(boostType, itemsLeft, telegramId);
 
   return NextResponse.json(updatedBoosts);
 }

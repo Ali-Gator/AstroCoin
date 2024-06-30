@@ -1,3 +1,5 @@
+'use client';
+
 import { StateCreator } from 'zustand';
 import { BalanceSlice } from './type';
 import { MS_IN_SECOND } from '@/helpers/constants/time';
@@ -11,24 +13,27 @@ export const createBalanceSlice: StateCreator<
   [],
   BalanceSlice
 > = (set, get) => {
-  setInterval(() => {
-    set((state) => {
-      if (!state) return {};
-      const currentEnergyLevel = state.currentEnergyLevel - 1;
-      if (currentEnergyLevel < 0) {
-        return state;
-      }
-      return {
-        ...state,
-        currentBalance: state.currentBalance + state.tokenGain,
-        currentEnergyLevel: currentEnergyLevel,
-      };
-    });
-  }, MS_IN_SECOND);
+  if (typeof window !== 'undefined') {
+    setInterval(() => {
+      set((state) => {
+        console.log('🚀 ~ set ~ state:', state.currentEnergyLevel);
+        if (!state) return {};
+        const currentEnergyLevel = state.currentEnergyLevel - 1;
+        if (currentEnergyLevel < 0) {
+          return state;
+        }
+        return {
+          ...state,
+          currentBalance: state.currentBalance + state.tokenGain,
+          currentEnergyLevel: currentEnergyLevel,
+        };
+      });
+    }, MS_IN_SECOND);
+  }
 
   /*
     Calculate current balance based on time passed since last balance update
-    TODO: Should include all the boosters and other factors that can affect the balance
+    TODO: Should include all the boosters and other factors that can affect the balance offline
   */
   const calculateCurrentBalance = (
     state: BalanceSlice,
@@ -104,6 +109,10 @@ export const createBalanceSlice: StateCreator<
         energyCapacity,
         tokenGain,
       } = get();
+      console.log(
+        '🚀 ~ updateBalance: ~ currentEnergyLevel:',
+        currentEnergyLevel,
+      );
       if (!telegramId) return;
       const newBalance = {
         staticBalance: currentBalance,
@@ -118,13 +127,11 @@ export const createBalanceSlice: StateCreator<
       console.log('🚀 ~ updateBalance: ~ data:', data);
       console.log('🚀 ~ updateBalance: ~ status:', status);
     },
-    refillEnergy: () => {
+    refillEnergy: () =>
       set((state) => ({
         ...state,
         currentEnergyLevel: state.energyCapacity,
-      }));
-      console.log('refill', get());
-    },
+      })),
     fetchBalance: async (telegramId: string) => {
       const { data: fetchedBalance } = await axios.post('api/balance', {
         telegramId,
@@ -135,6 +142,10 @@ export const createBalanceSlice: StateCreator<
           ...state,
           ...fetchedBalance,
         });
+        console.log(
+          '🚀 ~ fetchBalance: ~ recalculatedBalance:',
+          recalculatedBalance,
+        );
         return {
           ...state,
           ...recalculatedBalance,

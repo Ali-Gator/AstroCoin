@@ -18,4 +18,5 @@ export interface BalanceSlice {
   addEnergy: (increment: number) => void;
   refillEnergy: () => void;
   fetchBalance: (telegramId: string) => Promise<void>;
+  updateBalance: () => void;
 }

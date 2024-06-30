@@ -22,6 +22,6 @@ export async function PUT(req: Request) {
     const balance = await updateBalance(newBalance, telegramId);
     return NextResponse.json(balance);
   } catch (error) {
-    return NextResponse.json({ message: 'Error updating balance' });
+    return NextResponse.json({ error });
   }
 }
