@@ -1,3 +1,4 @@
+import { AppRoutes } from '@/config/routes';
 import Link from 'next/link';
 
 export const Final = () => {
@@ -11,7 +12,7 @@ export const Final = () => {
       </p>
       <Link
         className="px-4 py-2.5 rounded-[10px] text-xl bg-background-buttons text-text-dark"
-        href="/earn"
+        href={AppRoutes.Earn}
       >
         Back to Quizizz
       </Link>

@@ -27,7 +27,7 @@ export default function TaskPage({ params }: ITaskPageProps) {
   }
 
   const { reward, steps } = currTask;
-  const { question, description, answers } = steps[currStep];
+  const { question, questQuestion, description, answers } = steps[currStep];
 
   const onAnswerClick = (isTrue: boolean) => {
     if (isTrue) {
@@ -71,7 +71,14 @@ export default function TaskPage({ params }: ITaskPageProps) {
       </p>
       <ProgressBar className="mt-2.5" current={currReward} total={reward} />
       {screenType !== EScreenType.Final && (
-        <Question step={currStep + 1} text={question} />
+        <Question
+          step={currStep + 1}
+          text={
+            screenType === EScreenType.Answers
+              ? questQuestion || question
+              : question
+          }
+        />
       )}
       {screenType === EScreenType.Description && (
         <Description text={description} onClick={showAnswers} />
