@@ -1,5 +1,5 @@
 import { TaskItem } from '../TaskItem.tsx/TaskItem';
-import { tasks } from './data';
+import { tasks } from '../../data';
 
 export const TasksList = () => {
   return (

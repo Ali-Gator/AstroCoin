@@ -1,4 +1,4 @@
-import { ITask } from './types';
+import { ITask } from './components/TasksList/types';
 import tonColor from '@/public/earn/tasks/ton-color.png';
 
 export const tasks: ITask[] = [
@@ -7,11 +7,11 @@ export const tasks: ITask[] = [
     title: 'How to build on TON?',
     image: tonColor,
     color: '#24A1DEA8',
-    reward: 150000,
+    reward: 15000,
     isCompleted: false,
     steps: [
       {
-        question: '1. What is blockchain?',
+        question: 'What is blockchain?',
         description:
           'A blockchain is a decentralized, distributed digital ledger used to record transactions across many computers. It ensures that the recorded transactions cannot be altered retroactively, making it secure and transparent. Each block in the chain contains a number of transactions, and every time a new transaction occurs on the blockchain, a record of that transaction is added to every participant’s ledger.',
         answers: [
@@ -29,6 +29,21 @@ export const tasks: ITask[] = [
           },
           {
             text: 'An internet protocol',
+            isTrue: false,
+          },
+        ],
+      },
+      {
+        question: 'What is bla-bla?',
+        description:
+          'A bla-bla is a decentralized, distributed digital ledger used to record transactions across many computers. It ensures that the recorded transactions cannot be altered retroactively, making it secure and transparent. Each block in the chain contains a number of transactions, and every time a new transaction occurs on the blockchain, a record of that transaction is added to every participant’s ledger.',
+        answers: [
+          {
+            text: 'A type of data base managed by a central authority',
+            isTrue: true,
+          },
+          {
+            text: 'A decentralized, distributed digital ledger',
             isTrue: false,
           },
         ],
