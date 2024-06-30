@@ -21,10 +21,10 @@ export const TaskItem: FC<ITask> = ({
       addToBalance(reward);
     }
   };
-
   return (
     <Link
-      className={`flex items-center w-full py-3 px-4 rounded-3xl font-normal bg-[${color}]`}
+      className={'flex items-center w-full py-3 px-4 rounded-3xl font-normal'}
+      style={{ backgroundColor: color }}
       href={`/earn/${id}`}
     >
       <Image src={image} alt={title} width={48} height={48} />
