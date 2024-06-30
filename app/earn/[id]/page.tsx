@@ -7,6 +7,7 @@ import { Answers } from '@/app/earn/[id]/components/Answers/Answers';
 import { EScreenType, ITaskPageProps } from '@/app/earn/[id]/types';
 import { Question } from '@/app/earn/[id]/components/Question/Question';
 import { Final } from '@/app/earn/[id]/components/Final/Final';
+import classNames from 'classnames';
 
 export default function TaskPage({ params }: ITaskPageProps) {
   const currTask = tasks.find(({ id }) => id === params.id);
@@ -43,10 +44,30 @@ export default function TaskPage({ params }: ITaskPageProps) {
     }
   };
 
+  const onBackClick = () => {
+    if (screenType === EScreenType.Answers) {
+      setScreenType(EScreenType.Description);
+    }
+  };
+
   return (
     <div className="flex flex-col w-full h-full min-h-[100vh] relative py-4 px-6 bg-gradient-to-b from-[#5F22A0] to[#160C20]">
       <p className="mt-2.5 font-termina700 text-center">
-        <span className="text-text-accent">Learn</span> to earn
+        <span
+          className={classNames({
+            'text-text-accent': screenType === EScreenType.Description,
+          })}
+        >
+          Learn
+        </span>{' '}
+        to{' '}
+        <span
+          className={classNames({
+            'text-text-accent': screenType === EScreenType.Answers,
+          })}
+        >
+          earn
+        </span>
       </p>
       <ProgressBar className="mt-2.5" current={currReward} total={reward} />
       {screenType !== EScreenType.Final && (
@@ -60,6 +81,7 @@ export default function TaskPage({ params }: ITaskPageProps) {
           answers={answers}
           onAnswerClick={onAnswerClick}
           onContinueClick={onContinueClick}
+          onBackClick={onBackClick}
         />
       )}
       {screenType === EScreenType.Final && <Final />}

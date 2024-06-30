@@ -1,6 +1,7 @@
 import { FC, useCallback, useState } from 'react';
 import { IAnswersProps } from '@/app/earn/[id]/components/Answers/types';
 import { Answer } from '@/app/earn/[id]/components/Answer/Answer';
+import rightArrow from '@/public/earn/tasks/right-arrow.svg';
 import Image from 'next/image';
 import correctIcon from '@/public/earn/tasks/correct.svg';
 import incorrectIcon from '@/public/earn/tasks/incorrect.svg';
@@ -10,6 +11,7 @@ export const Answers: FC<IAnswersProps> = ({
   answers,
   onAnswerClick,
   onContinueClick,
+  onBackClick,
 }) => {
   const [isAnswerDisabled, setIsAnswerDisabled] = useState(false);
   const [isCorrect, setIsCorrect] = useState<boolean | undefined>(undefined);
@@ -56,16 +58,32 @@ export const Answers: FC<IAnswersProps> = ({
             )}
           </div>
         )}
-        <button
-          className={classNames(
-            'block w-full px-4 py-2.5 rounded-[10px] text-xl bg-background-buttons text-text-dark',
-            { 'opacity-40': typeof isCorrect === 'undefined' },
+        <div className="flex flex-row gap-x-2 w-full">
+          {isCorrect === undefined && (
+            <button
+              onClick={onBackClick}
+              className="p-4 rounded-full bg-text-accent flex justify-center items-center"
+            >
+              <Image
+                src={rightArrow}
+                className="rotate-180"
+                alt="rightArrow"
+                width={20}
+                height={16}
+              />
+            </button>
           )}
-          disabled={typeof isCorrect === 'undefined'}
-          onClick={onContinueClick}
-        >
-          Continue
-        </button>
+          <button
+            className={classNames(
+              'block w-full px-4 py-2.5 rounded-[10px] text-xl bg-background-buttons text-text-dark',
+              { 'opacity-40': typeof isCorrect === 'undefined' },
+            )}
+            disabled={typeof isCorrect === 'undefined'}
+            onClick={onContinueClick}
+          >
+            Continue
+          </button>
+        </div>
       </div>
     </div>
   );

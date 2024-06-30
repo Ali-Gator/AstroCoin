@@ -4,4 +4,5 @@ export interface IAnswersProps {
   answers: IAnswer[];
   onAnswerClick: (isTrue: boolean) => void;
   onContinueClick: () => void;
+  onBackClick: () => void;
 }
