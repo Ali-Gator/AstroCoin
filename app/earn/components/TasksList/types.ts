@@ -12,6 +12,7 @@ export interface ITask {
 
 export interface IStep {
   question: string;
+  questQuestion?: string;
   description: string;
   answers: IAnswer[];
 }
