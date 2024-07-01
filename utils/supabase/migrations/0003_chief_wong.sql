@@ -1,0 +1,1 @@
+ALTER TABLE "balance" ADD CONSTRAINT "balance_owner_telegram_id_unique" UNIQUE("owner_telegram_id");

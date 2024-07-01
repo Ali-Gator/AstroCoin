@@ -8,6 +8,41 @@
       "when": 1718893203015,
       "tag": "0000_kind_iron_lad",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1719327291038,
+      "tag": "0001_familiar_cloak",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1719329142845,
+      "tag": "0002_robust_blade",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1719330215650,
+      "tag": "0003_chief_wong",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1719497493956,
+      "tag": "0004_narrow_makkari",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1719498553661,
+      "tag": "0005_handy_night_nurse",
+      "breakpoints": true
     }
   ]
 }

@@ -3,7 +3,7 @@ import { InsertUser, users } from '@/db';
 import { eq } from 'drizzle-orm';
 
 export async function createUser(data: InsertUser) {
-  await db.insert(users).values(data);
+  await db.insert(users).values(data).returning();
 }
 
 export async function getUserByTelegramId(
