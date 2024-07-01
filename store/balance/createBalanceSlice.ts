@@ -16,7 +16,6 @@ export const createBalanceSlice: StateCreator<
   if (typeof window !== 'undefined') {
     setInterval(() => {
       set((state) => {
-        console.log('🚀 ~ set ~ state:', state.currentEnergyLevel);
         if (!state) return {};
         const currentEnergyLevel = state.currentEnergyLevel - 1;
         if (currentEnergyLevel < 0) {
@@ -109,10 +108,6 @@ export const createBalanceSlice: StateCreator<
         energyCapacity,
         tokenGain,
       } = get();
-      console.log(
-        '🚀 ~ updateBalance: ~ currentEnergyLevel:',
-        currentEnergyLevel,
-      );
       if (!telegramId) return;
       const newBalance = {
         staticBalance: currentBalance,
@@ -124,8 +119,6 @@ export const createBalanceSlice: StateCreator<
         telegramId,
         newBalance,
       });
-      console.log('🚀 ~ updateBalance: ~ data:', data);
-      console.log('🚀 ~ updateBalance: ~ status:', status);
     },
     refillEnergy: () =>
       set((state) => ({
@@ -136,16 +129,11 @@ export const createBalanceSlice: StateCreator<
       const { data: fetchedBalance } = await axios.post('api/balance', {
         telegramId,
       });
-      console.log('🚀 ~ fetchBalance: ~ fetchedBalance:', fetchedBalance);
       set((state) => {
         const recalculatedBalance = calculateCurrentBalance({
           ...state,
           ...fetchedBalance,
         });
-        console.log(
-          '🚀 ~ fetchBalance: ~ recalculatedBalance:',
-          recalculatedBalance,
-        );
         return {
           ...state,
           ...recalculatedBalance,

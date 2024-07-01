@@ -49,13 +49,11 @@ export const createBoostsSlice: StateCreator<
           },
         };
       });
-      const { data, status } = await axios.post('api/boosts', {
+      const { data, status } = await axios.put('api/boosts', {
         telegramId: get().telegramId,
         itemsLeft: newItemsLeft,
         boostType,
       });
-      console.log('🚀 ~ utilizeBoost: ~ data:', data);
-      console.log('🚀 ~ utilizeBoost: ~ status:', status);
     },
     fetchBoosts: async () => {
       const telegramId = get().telegramId;
@@ -63,7 +61,6 @@ export const createBoostsSlice: StateCreator<
       const { data: fetchedBoosts } = await axios.post('api/boosts', {
         telegramId,
       });
-      console.log('🚀 ~ fetchBoosts: ~ fetchedBoosts:', fetchedBoosts);
       set((state) => {
         const newBoosts = { ...state.boosts };
         fetchedBoosts.forEach((boost: BoostDbData) => {

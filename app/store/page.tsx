@@ -13,7 +13,6 @@ export default function Page() {
   }, [fetchBoosts, isPlaceholder, telegramId]);
 
   if (!boosts) return null;
-  console.log('🚀 ~ Page ~ boosts:', boosts);
 
   return (
     <div className="p-4">

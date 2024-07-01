@@ -5,7 +5,13 @@ export function TopHeader() {
   return (
     <div className="flex flex-col items-center gap-4">
       <div className="flex flex-row gap-5 items-center">
-        <Image src={moon} alt="moon" objectFit="cover" width={72} height={72} />
+        <Image
+          src={moon}
+          alt="moon"
+          style={{ objectFit: 'cover' }}
+          width={72}
+          height={72}
+        />
         <span className="text-7xl">🧠</span>
       </div>
       <div className="flex flex-col gap-2 items-center">

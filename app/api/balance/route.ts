@@ -4,7 +4,6 @@ import { NextResponse } from 'next/server';
 export async function POST(req: Request) {
   const { telegramId } = await req.json();
   const balance = await getBalanceByTelegramId(telegramId);
-  console.log('🚀 ~ POST ~ balance:', balance);
 
   if (!balance || balance.length === 0) {
     const newBalance = await initializeBalance({
@@ -20,8 +19,8 @@ export async function PUT(req: Request) {
   const { telegramId, newBalance } = await req.json();
   try {
     const balance = await updateBalance(newBalance, telegramId);
-    return NextResponse.json(balance);
+    return NextResponse.json({ balance });
   } catch (error) {
-    return NextResponse.json({ error });
+    return NextResponse.json({ status: 400, error });
   }
 }

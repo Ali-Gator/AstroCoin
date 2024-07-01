@@ -18,7 +18,6 @@ export const BoostCard: FC<BoostInterface> = (boost) => {
     isBlurred,
     type,
   } = boost;
-  console.log('🚀 ~ boost:', boost);
   const { utilizeBoost, getPotentialIncome } = useBoundStore((state) => state);
 
   const handleBoost = () => {

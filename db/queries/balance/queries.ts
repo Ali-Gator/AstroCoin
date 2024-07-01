@@ -16,16 +16,16 @@ export async function getBalanceByTelegramId(
 }
 
 export async function updateBalance(
-  data: Partial<InsertBalance>,
+  newBalance: Partial<InsertBalance>,
   ownerTelegramId: SelectBalance['ownerTelegramId'],
 ) {
   await db
-    .update({
-      ...balance,
+    .update(balance)
+    .set({
+      ...newBalance,
       balanceUpdatedAt: sql`now()`,
       energyUpdatedAt: sql`now()`,
     })
-    .set(data)
     .where(eq(balance.ownerTelegramId, ownerTelegramId))
     .returning();
 }
