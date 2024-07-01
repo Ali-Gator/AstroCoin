@@ -15,7 +15,6 @@ export const createUserSlice: StateCreator<
     currentUser: null,
 
     setTelegramId: (telegramId?: string) => {
-      console.log('🚀 ~ telegramId:', telegramId);
       set((state) => ({ ...state, telegramId: telegramId || null }));
       if (telegramId) {
         get().fetchUser(telegramId);
