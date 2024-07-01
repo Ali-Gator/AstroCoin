@@ -1,2 +1,2 @@
-export * from './createBalanceSlice';
 export * from './type';
+export * from './createBalanceSlice';

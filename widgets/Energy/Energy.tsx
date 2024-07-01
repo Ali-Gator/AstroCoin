@@ -3,9 +3,7 @@ import styles from './Energy.module.css';
 import { useBoundStore } from '@/store';
 
 export const Energy: FC = () => {
-  const { currentEnergyLevel, energyCapacity } = useBoundStore(
-    (state) => state,
-  );
+  const { currentEnergyLevel, energyCapacity } = useBoundStore();
 
   return (
     <div className={styles.energyWrapper}>
