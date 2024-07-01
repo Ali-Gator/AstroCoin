@@ -60,10 +60,14 @@ module.exports = {
           transparent09: 'rgba(255, 255, 255, 0.9)',
           gradient: 'rgba(92, 52, 134, 1)',
           cards: 'rgba(75, 79, 88, 1)',
+          buttons: 'rgba(240, 240, 240, 1)',
         },
         text: {
           DEFAULT: '#fff',
           'secondary-btn': '#fff',
+          accent: '#EDDF23',
+          dark: 'rgba(95, 34, 160, 1)',
+          danger: 'rgba(255, 86, 94, 1)',
         },
         gradient: {
           start: 'rgba(40, 40, 40, 1)',
@@ -71,6 +75,10 @@ module.exports = {
         },
         button: {
           background: 'rgba(46, 74, 197, 1)',
+        },
+        card: {
+          background: 'rgba(240, 240, 240, 0.1)',
+          border: 'rgba(240, 240, 240, 0.25)',
         },
       },
       maxWidth: {
