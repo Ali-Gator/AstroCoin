@@ -6,6 +6,7 @@ import { MS_IN_SECOND } from '@/helpers/constants/time';
 import axios from 'axios';
 import { UserSlice } from '../user';
 import { InsertBalance } from '@/db';
+import { calculateCurrentBalance } from './helpers/calculateCurrentBalance';
 
 export const createBalanceSlice: StateCreator<
   BalanceSlice & UserSlice,
@@ -29,33 +30,6 @@ export const createBalanceSlice: StateCreator<
       });
     }, MS_IN_SECOND);
   }
-
-  /*
-    Calculate current balance based on time passed since last balance update
-    TODO: Should include all the boosters and other factors that can affect the balance offline
-  */
-  const calculateCurrentBalance = (
-    state: BalanceSlice,
-  ): Partial<BalanceSlice> => {
-    const dateString = state?.balanceUpdatedAt;
-    let secondsPassed = 0;
-    if (dateString) {
-      const dateObject = new Date(dateString);
-      const timestamp = dateObject.getTime();
-      secondsPassed = Math.floor((Date.now() - timestamp) / MS_IN_SECOND);
-    } else {
-      secondsPassed = 0;
-    }
-    const maxSecondsPassed =
-      secondsPassed > state.staticEnergyLevel
-        ? state.staticEnergyLevel
-        : secondsPassed;
-    return {
-      currentBalance: state.staticBalance + maxSecondsPassed * state.tokenGain,
-      currentEnergyLevel: state.staticEnergyLevel - maxSecondsPassed,
-      tokenGain: state.tokenGain,
-    };
-  };
 
   return {
     staticBalance: 0,

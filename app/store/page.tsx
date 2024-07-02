@@ -22,12 +22,6 @@ export default function Page() {
           <BoostCard key={boost.type} {...boost} />
         ))}
       </ul>
-      {/* <h2 className="font-termina600 text-2xl mt-6">Store</h2>
-      <ul className="mt-4 flex flex-col gap-y-2">
-        {BoostCardDataStore.map((data) => (
-          <BoostCard key={data.title} {...data} />
-        ))}
-      </ul> */}
     </div>
   );
 }
