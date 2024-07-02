@@ -30,6 +30,6 @@ export const boostsData: BoostsSlice['boosts'] = {
     maxItems: 3,
     energyLeftCondition: null,
     activeDuration: 'once',
-    resetDuration: 'immediately',
+    resetDuration: 2,
   },
 };
