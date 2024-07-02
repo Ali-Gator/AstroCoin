@@ -4,6 +4,7 @@ import { boostsData } from './data';
 import axios from 'axios';
 import { UserSlice } from '../user';
 import { BalanceSlice } from '../balance';
+import { calculateBoostsLeft } from './helpers/calculateBoostsLeft';
 
 export const createBoostsSlice: StateCreator<
   BoostsSlice & UserSlice & BalanceSlice,
@@ -58,13 +59,21 @@ export const createBoostsSlice: StateCreator<
     fetchBoosts: async () => {
       const telegramId = get().telegramId;
       if (!telegramId) return;
-      const { data: fetchedBoosts } = await axios.post('api/boosts', {
+      const {
+        data: { boosts: fetchedBoosts },
+      } = await axios.post('api/boosts', {
         telegramId,
       });
+      if (!fetchedBoosts) return;
       set((state) => {
         const newBoosts = { ...state.boosts };
         fetchedBoosts.forEach((boost: BoostDbData) => {
-          newBoosts[boost.type].itemsLeft = boost.itemsLeft;
+          const newItemsLeft = calculateBoostsLeft({
+            ...boost,
+            maxItems: newBoosts[boost.type].maxItems,
+            resetDuration: newBoosts[boost.type].resetDuration,
+          });
+          newBoosts[boost.type].itemsLeft = newItemsLeft;
         });
         return {
           ...state,
