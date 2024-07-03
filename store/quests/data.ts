@@ -1,10 +1,10 @@
-import { ITask } from './components/TasksList/types';
+import { QuestType, QuestsSlice } from './types';
 import tonColor from '@/public/earn/tasks/ton-color.png';
 import astro from '@/public/avatars/community.png';
 
-export const tasks: ITask[] = [
-  {
-    id: '1',
+export const quests: QuestsSlice['quests'] = {
+  1: {
+    id: 1,
     title: 'What is blockchain?',
     image: tonColor,
     color: '#24A1DEA8',
@@ -102,8 +102,8 @@ export const tasks: ITask[] = [
       },
     ],
   },
-  {
-    id: '2',
+  2: {
+    id: 2,
     title: 'What is Astro?',
     image: astro,
     color: '#4B4F58',
@@ -205,4 +205,4 @@ export const tasks: ITask[] = [
       },
     ],
   },
-];
+};

@@ -43,6 +43,13 @@
       "when": 1719498553661,
       "tag": "0005_handy_night_nurse",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1720018264251,
+      "tag": "0006_wild_lady_vermin",
+      "breakpoints": true
     }
   ]
 }

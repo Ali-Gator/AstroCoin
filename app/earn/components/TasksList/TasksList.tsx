@@ -1,11 +1,14 @@
+import { useBoundStore } from '@/store';
 import { TaskItem } from '../TaskItem.tsx/TaskItem';
-import { tasks } from '../../data';
 
 export const TasksList = () => {
+  const { quests: questsObject, isPlaceholder } = useBoundStore();
+  const quests = Object.values(questsObject);
+
   return (
     <div className="flex flex-col items-center gap-4 w-full">
-      {tasks.map((task) => (
-        <TaskItem key={task.id} {...task} />
+      {quests.map((quest) => (
+        <TaskItem key={quest.id} {...quest} isCompleted={isPlaceholder} />
       ))}
     </div>
   );

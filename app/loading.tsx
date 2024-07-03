@@ -7,7 +7,7 @@ export default function Loading() {
       <Image src="/logo.svg" alt="AstroCoin Logo" width={164} height={20} />
       <div className={styles.animatedGradient} />
       <p className="mt-[100px] text-xl opacity-40">
-        It&rsquo;s just a game, maybe
+        Learn like if you would earn
       </p>
     </div>
   );

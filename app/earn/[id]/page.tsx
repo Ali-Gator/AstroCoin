@@ -1,6 +1,5 @@
 'use client';
 import { useCallback, useState } from 'react';
-import { tasks } from '../data';
 import { ProgressBar } from '@/app/earn/[id]/components/ProgressBar/ProgressBar';
 import { Description } from '@/app/earn/[id]/components/Description/Description';
 import { Answers } from '@/app/earn/[id]/components/Answers/Answers';
@@ -8,9 +7,11 @@ import { EScreenType, ITaskPageProps } from '@/app/earn/[id]/types';
 import { Question } from '@/app/earn/[id]/components/Question/Question';
 import { Final } from '@/app/earn/[id]/components/Final/Final';
 import classNames from 'classnames';
+import { useBoundStore } from '@/store';
 
 export default function TaskPage({ params }: ITaskPageProps) {
-  const currTask = tasks.find(({ id }) => id === params.id);
+  const { quests: questsObject } = useBoundStore();
+  const currQuest = questsObject[Number(params.id)];
 
   const [currStep, setCurrStep] = useState<number>(0);
   const [screenType, setScreenType] = useState<EScreenType>(
@@ -22,11 +23,11 @@ export default function TaskPage({ params }: ITaskPageProps) {
     setScreenType(EScreenType.Answers);
   }, []);
 
-  if (!currTask) {
+  if (!currQuest) {
     return null;
   }
 
-  const { reward, steps } = currTask;
+  const { reward, steps, isCompleted } = currQuest;
   const { question, questQuestion, description, answers } = steps[currStep];
 
   const onAnswerClick = (isTrue: boolean) => {
@@ -68,6 +69,12 @@ export default function TaskPage({ params }: ITaskPageProps) {
         >
           earn
         </span>
+        {isCompleted && (
+          <span className="text-xs text-text font-termina300">
+            {' '}
+            (completed)
+          </span>
+        )}
       </p>
       <ProgressBar className="mt-2.5" current={currReward} total={reward} />
       {screenType !== EScreenType.Final && (
