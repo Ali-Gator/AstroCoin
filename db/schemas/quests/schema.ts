@@ -12,6 +12,7 @@ export const quests = pgTable(
   'quests',
   {
     id: serial('id').primaryKey(),
+    name: text('name').notNull(),
     isCompleted: boolean('is_completed').notNull().default(false),
     updatedAt: timestamp('updated_at')
       .notNull()
@@ -20,7 +21,7 @@ export const quests = pgTable(
     ownerTelegramId: text('owner_telegram_id').notNull(),
   },
   (table) => ({
-    unq: unique().on(table.id, table.ownerTelegramId),
+    unq: unique().on(table.name, table.ownerTelegramId),
   }),
 );
 

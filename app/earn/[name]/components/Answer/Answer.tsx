@@ -1,5 +1,5 @@
 import { FC, useCallback, useMemo, useState } from 'react';
-import { IAnswerProps } from '@/app/earn/[id]/components/Answer/types';
+import { IAnswerProps } from '@/app/earn/[name]/components/Answer/types';
 
 export const Answer: FC<IAnswerProps> = ({
   answer: { text, isTrue },

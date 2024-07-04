@@ -1,5 +1,5 @@
 export interface ITaskPageProps {
-  params: { id: string };
+  params: { name: string };
 }
 
 export enum EScreenType {

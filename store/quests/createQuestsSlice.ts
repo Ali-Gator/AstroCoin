@@ -3,9 +3,11 @@ import { quests } from './data';
 import axios from 'axios';
 import { UserSlice } from '../user';
 import { QuestType, QuestsSlice } from './types';
+import { SelectQuests } from '@/db';
+import { BalanceSlice } from '../balance';
 
 export const createQuestsSlice: StateCreator<
-  QuestsSlice & UserSlice,
+  QuestsSlice & UserSlice & BalanceSlice,
   [],
   [],
   QuestsSlice
@@ -14,16 +16,41 @@ export const createQuestsSlice: StateCreator<
     quests: quests,
     isPlaceholder: true,
 
-    completeQuest: async (questType: QuestType['id']) => {},
+    completeQuest: async (
+      questName: QuestType['name'],
+      questReward: number,
+    ) => {
+      const { telegramId, addToBalance, updateBalance } = get();
+      addToBalance(questReward);
+      const { data, status } = await axios.put('api/quests', {
+        telegramId,
+        questName,
+      });
+      console.log('🚀 ~ completeQuest: ~ data:', data);
+      console.log('🚀 ~ completeQuest: ~ status:', status);
+      // updateBalance();
+    },
     fetchQuests: async () => {
       const telegramId = get().telegramId;
       if (!telegramId) return;
       const {
-        data: { boosts: fetchedBoosts },
-      } = await axios.post('api/boosts', {
+        data: { quests: fetchedQuests },
+      } = await axios.post<{ quests: SelectQuests[] }>('api/quests', {
         telegramId,
       });
-      if (!fetchedBoosts) return;
+      console.log('🚀 ~ fetchQuests: ~ fetchedQuests:', fetchedQuests);
+      if (!fetchedQuests) return;
+      set((state) => {
+        const newQuests = { ...state.quests };
+        fetchedQuests.forEach((quest: SelectQuests) => {
+          newQuests[quest.name] = { ...newQuests[quest.name], ...quest };
+        });
+        return {
+          ...state,
+          quests: newQuests,
+          isPlaceholder: false,
+        };
+      });
     },
   };
 };

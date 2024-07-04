@@ -1,6 +1,6 @@
 import { FC, useCallback, useState } from 'react';
-import { IAnswersProps } from '@/app/earn/[id]/components/Answers/types';
-import { Answer } from '@/app/earn/[id]/components/Answer/Answer';
+import { IAnswersProps } from '@/app/earn/[name]/components/Answers/types';
+import { Answer } from '@/app/earn/[name]/components/Answer/Answer';
 import rightArrow from '@/public/earn/tasks/right-arrow.svg';
 import Image from 'next/image';
 import correctIcon from '@/public/earn/tasks/correct.svg';

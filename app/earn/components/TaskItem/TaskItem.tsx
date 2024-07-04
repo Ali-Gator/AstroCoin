@@ -7,7 +7,7 @@ import Link from 'next/link';
 import { FC } from 'react';
 
 export const TaskItem: FC<QuestType> = ({
-  id,
+  name,
   title,
   image,
   color,
@@ -18,7 +18,7 @@ export const TaskItem: FC<QuestType> = ({
     <Link
       className={'flex items-center w-full py-3 px-4 rounded-3xl font-normal'}
       style={{ backgroundColor: color }}
-      href={isCompleted ? `${AppRoutes.Earn}/${id}` : AppRoutes.Earn}
+      href={!isCompleted ? `${AppRoutes.Earn}/${name}` : AppRoutes.Earn}
     >
       <Image src={image} alt={title} width={48} height={48} />
       <p className="ml-2">{title}</p>

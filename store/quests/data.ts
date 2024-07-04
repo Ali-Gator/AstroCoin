@@ -1,10 +1,10 @@
-import { QuestType, QuestsSlice } from './types';
-import tonColor from '@/public/earn/tasks/ton-color.png';
 import astro from '@/public/avatars/community.png';
+import tonColor from '@/public/earn/tasks/ton-color.png';
+import { QuestsSlice } from './types';
 
 export const quests: QuestsSlice['quests'] = {
-  1: {
-    id: 1,
+  'blockchain-basics': {
+    name: 'blockchain-basics',
     title: 'What is blockchain?',
     image: tonColor,
     color: '#24A1DEA8',
@@ -102,8 +102,8 @@ export const quests: QuestsSlice['quests'] = {
       },
     ],
   },
-  2: {
-    id: 2,
+  'astro-basics': {
+    name: 'astro-basics',
     title: 'What is Astro?',
     image: astro,
     color: '#4B4F58',

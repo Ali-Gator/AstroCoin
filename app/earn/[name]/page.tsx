@@ -1,17 +1,17 @@
 'use client';
 import { useCallback, useState } from 'react';
-import { ProgressBar } from '@/app/earn/[id]/components/ProgressBar/ProgressBar';
-import { Description } from '@/app/earn/[id]/components/Description/Description';
-import { Answers } from '@/app/earn/[id]/components/Answers/Answers';
-import { EScreenType, ITaskPageProps } from '@/app/earn/[id]/types';
-import { Question } from '@/app/earn/[id]/components/Question/Question';
-import { Final } from '@/app/earn/[id]/components/Final/Final';
+import { ProgressBar } from '@/app/earn/[name]/components/ProgressBar/ProgressBar';
+import { Description } from '@/app/earn/[name]/components/Description/Description';
+import { Answers } from '@/app/earn/[name]/components/Answers/Answers';
+import { EScreenType, ITaskPageProps } from '@/app/earn/[name]/types';
+import { Question } from '@/app/earn/[name]/components/Question/Question';
+import { Final } from '@/app/earn/[name]/components/Final/Final';
 import classNames from 'classnames';
 import { useBoundStore } from '@/store';
 
 export default function TaskPage({ params }: ITaskPageProps) {
-  const { quests: questsObject } = useBoundStore();
-  const currQuest = questsObject[Number(params.id)];
+  const { quests: questsObject, completeQuest } = useBoundStore();
+  const currentQuest = questsObject[params.name];
 
   const [currStep, setCurrStep] = useState<number>(0);
   const [screenType, setScreenType] = useState<EScreenType>(
@@ -23,11 +23,11 @@ export default function TaskPage({ params }: ITaskPageProps) {
     setScreenType(EScreenType.Answers);
   }, []);
 
-  if (!currQuest) {
+  if (!currentQuest) {
     return null;
   }
 
-  const { reward, steps, isCompleted } = currQuest;
+  const { reward, steps, isCompleted } = currentQuest;
   const { question, questQuestion, description, answers } = steps[currStep];
 
   const onAnswerClick = (isTrue: boolean) => {
@@ -41,6 +41,7 @@ export default function TaskPage({ params }: ITaskPageProps) {
       setCurrStep((prevStep) => ++prevStep);
       setScreenType(EScreenType.Description);
     } else {
+      completeQuest(params.name, currReward);
       setScreenType(EScreenType.Final);
     }
   };

@@ -1,4 +1,4 @@
-import { completeQuest, getQuestsByTelegramId } from '@/db';
+import { completeQuest, createQuests, getQuestsByTelegramId } from '@/db';
 import { NextResponse } from 'next/server';
 
 export async function POST(req: Request) {
@@ -7,7 +7,8 @@ export async function POST(req: Request) {
 
   try {
     if (!quests || quests.length === 0) {
-      return NextResponse.json({ quests: [] });
+      const newQuests = await createQuests(telegramId);
+      return NextResponse.json({ quests: newQuests });
     } else {
       return NextResponse.json({ quests });
     }
@@ -17,8 +18,11 @@ export async function POST(req: Request) {
 }
 
 export async function PUT(req: Request) {
-  const { telegramId, questId } = await req.json();
-  const updatedQuests = await completeQuest(questId, telegramId);
+  const { telegramId, questName } = await req.json();
+  console.log('🚀 ~ PUT ~ questName:', questName);
+  console.log('🚀 ~ PUT ~ telegramId:', telegramId);
+  const updatedQuests = await completeQuest(questName, telegramId);
+  console.log('🚀 ~ PUT ~ updatedQuests:', updatedQuests);
 
   return NextResponse.json({ updatedQuests });
 }

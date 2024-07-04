@@ -1,7 +1,7 @@
 import { StaticImageData } from 'next/image';
 
 export interface QuestType {
-  id: number;
+  name: string;
   title: string;
   reward: number;
   image: StaticImageData;
@@ -23,9 +23,9 @@ export interface QuestAnswer {
 }
 
 export interface QuestsSlice {
-  quests: Record<QuestType['id'], QuestType>;
+  quests: Record<QuestType['name'], QuestType>;
   isPlaceholder: boolean;
 
-  completeQuest: (questType: QuestType['id']) => void;
+  completeQuest: (questType: QuestType['name'], questReward: number) => void;
   fetchQuests: () => Promise<void>;
 }
